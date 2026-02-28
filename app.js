@@ -4,7 +4,7 @@ const dotenv = require('dotenv').config({
     debug:false
 });
 const path = require('node:path');
-
+const indexRouter = require('./routers/indexRouter.js');
 
 const app = express();
 app.set('view engine','ejs');
@@ -13,10 +13,16 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname,'public')));
 
 
-app.get('/',(req,res) => {
-    res.status(200).send("shivane sent this btw.");
-})
+app.get('/',indexRouter)
 
+app.use((req, res) => {
+    return res.status(404).render('404');
+});
+
+app.use((err, req, res, next) => {
+    console.error(err);
+    return res.status(500).render('error');
+});
 
 const PORT = process.env.PORT || 3000;
 
