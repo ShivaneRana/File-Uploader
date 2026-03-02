@@ -1,6 +1,6 @@
 const express = require("express");
-const expressSession = require('express-session');
-const dotenv = require("dotenv").config({quiet: true,debug: false});
+const expressSession = require("express-session");
+const dotenv = require("dotenv").config({ quiet: true, debug: false });
 const path = require("node:path");
 
 // Routers
