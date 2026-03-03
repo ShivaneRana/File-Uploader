@@ -1,5 +1,10 @@
 :root {
 	scroll-behavior: smooth;
+	--background-color: #1c1b22;
+	--font-color: white;
+	--color-gray: #56565f;
+	--color-hover-background: #133d57;
+	--color-hover: #69d0ff;
 }
 
 * {
@@ -10,7 +15,9 @@
 
 body {
 	font-size: 16px;
-	font-family: Arial, Helvetica, sans-serif;
+	background-color: var(--background-color);
+	color: var(--font-color);
+	font-family: Arial, Helvetica, sans-serif, system-ui;
 }
 
 .navbar{
@@ -19,6 +26,18 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	border-bottom: 1px solid var(--color-gray);
+}
+
+.main-container{
+	padding: 20px;
+}
+
+.navbar-header{
+	font-size: 36px;
+	font-weight: bolder;
+	text-decoration: none;
+	color: var(--font-color);
 }
 
 .navbar > div{
@@ -36,11 +55,17 @@ body {
 	justify-content: right;
 }
 
-.navbar > div > a{
-	border-radius: 2px;
-	outline: 1px solid black;
-	padding: 10px;
+.navbar > div:nth-child(2) > a{
+	border-radius: 3px;
+	outline: 1px solid var(--color-gray);
+	padding: 10px 10px;
 	margin-right: 20px;
 	text-decoration: none;
-	color: black;
+	color: var(--font-color);
+}
+
+.navbar > div:nth-child(2) > a:hover{
+	background-color: var(--color-hover-background);
+	color: var(--color-hover);
+	outline: 1px solid var(--color-hover);
 }
