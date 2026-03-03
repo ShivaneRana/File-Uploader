@@ -52,6 +52,19 @@ app.use("/", indexRouter);
 app.use("/login", loginRouter);
 app.use("/register", registerRouter);
 
+app.get('/logout', (req, res, next) => {
+    req.logout((err) => {
+        if (err) return next(err);
+
+        req.session.destroy((err) => {
+            if (err) return next(err);
+
+            res.clearCookie('connect.sid');
+            return res.redirect('/');
+        });
+    });
+});
+
 app.use((req, res) => {
 	return res.status(404).render("404");
 });
