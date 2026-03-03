@@ -7,6 +7,14 @@
     <title>Index</title>
 </head>
 <body>
-    <h1>This is just an example.</h1>
-</body>
+    <h1>Home Page.</h1>
+    <% if(locals.currentUser){ %>
+        <br>
+        <p>Logout <a href="/logout">Logout</a></p>
+        <br>
+    <% } %>
+        <p>Login <a href="/login">Login</a></p>
+        <br>
+        <p>Register <a href="/Register">Register</a></p>
+    </body>
 </html>
