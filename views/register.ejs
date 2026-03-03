@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./css/style.css" rel="stylesheet" type="text/css">
     <title>Register</title>
 </head>
 <body>
+    <%- include("./partials/navbar.ejs")%>
+    <main class="main-container">
     <h2>Register </h2>
     <form method="post" action="/register">
         <label for="username">Username: </label>
@@ -23,5 +26,7 @@
         <button>Register</button>
         <p>Already have an account ? <a href="/login">Login</a></p>
     </form>
+
+    </main>
 </body>
 </html>
