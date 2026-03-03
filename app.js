@@ -24,7 +24,8 @@ app.set("views", path.resolve(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
-//
+configurePassport(passport);
+
 app.use(
 	expressSession({
 		cookie: {
@@ -37,17 +38,15 @@ app.use(
 	}),
 );
 
-configurePassport(passport);
-
 app.use(passport.initialize());
 app.use(passport.session());
 
 app.use((req, res, next) => {
-	const currentUser = req.user;
+	res.locals.currentUser = req.user;
 	next();
 });
 
-app.get("/", indexRouter);
+app.use("/", indexRouter);
 
 app.use((req, res) => {
 	return res.status(404).render("404");
