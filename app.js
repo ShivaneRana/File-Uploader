@@ -9,6 +9,8 @@ const passport = require("passport");
 
 // Routers
 const indexRouter = require("./routers/indexRouter.js");
+const loginRouter = require('./routers/loginRouter.js');
+const registerRouter = require("./routers/registerRouter.js");
 
 const SESSION_SECRET = process.env.SESSION_SECRET;
 
@@ -47,6 +49,8 @@ app.use((req, res, next) => {
 });
 
 app.use("/", indexRouter);
+app.use("/login", loginRouter);
+app.use('/register',registerRouter);
 
 app.use((req, res) => {
 	return res.status(404).render("404");
