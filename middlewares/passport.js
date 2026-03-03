@@ -1,25 +1,21 @@
 const localStrategy = require("passport-local");
 const bycryptjs = require("bcryptjs");
-const db = require("../db/queries");
+const db = require("../db/queries.js")
 
-module.exports.configurePassport = (passport, pool) => {
+module.exports.configurePassport = (passport) => {
 	passport.use(
 		new localStrategy(async (username, password, done) => {
 			try {
-				const { rows } = await pool.query(
-					"SELECT * FROM members WHERE username = $1",
-					[username],
-				);
-				const member = rows[0];
+				const user = db.fetchUserByUsername(username);
 
-				if (!member) {
+				if (!user) {
 					console.log("Login denied");
 					return done(null, false, { message: "Incorrect username" });
 				}
 
 				const match = await bycryptjs.compare(
 					password,
-					member.password,
+					user.password,
 				);
 
 				if (!match) {
@@ -28,21 +24,21 @@ module.exports.configurePassport = (passport, pool) => {
 				}
 
 				console.log("login approved");
-				return done(null, member);
+				return done(null, user);
 			} catch (err) {
 				return done(err);
 			}
 		}),
 	);
 
-	passport.serializeUser((member, done) => {
-		done(null, member.mid);
+	passport.serializeUser((user, done) => {
+		done(null, user.id);
 	});
 
-	passport.deserializeUser(async (mid, done) => {
+	passport.deserializeUser(async (id, done) => {
 		try {
-			const member = await db.fetchMember(mid);
-			done(null, member);
+			const user = await db.fetchUserById(id);
+			done(null, user);
 		} catch (err) {
 			done(err);
 		}
