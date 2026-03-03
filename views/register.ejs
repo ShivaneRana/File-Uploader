@@ -1,32 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./css/style.css" rel="stylesheet" type="text/css">
     <title>Register</title>
 </head>
+
 <body>
     <%- include("./partials/navbar.ejs")%>
-    <main class="main-container">
-    <h2>Register </h2>
-    <form method="post" action="/register">
-        <label for="username">Username: </label>
-        <input class="username" name="username" type="text" placeholder="username" required>
-        <br>
-        <label for="password">Password: </label>
-        <input class="password" name="password" type="text" placeholder="password" required>
-        <br>
-        <label for="confirm_password">Confirm password: </label>
-        <input class="confirm_password" name="confirm_password" type="text" placeholder="confirm password" required>
-        <br>
-        <label for="email">Email(optional): </label>
-        <input class="email" name="email" type="text" placeholder="email">
-        <br><br>
-        <button>Register</button>
-        <p>Already have an account ? <a href="/login">Login</a></p>
-    </form>
+        <main class="main-container">
+            <section class="auth-section">
+                <header>
+                    <h2>Register </h2>
+                    <p>Already have an account ? <a href="/login">Login</a></p>
+                </header>
+                <form method="post" action="/register">
+                    <label for="username">Username: </label>
+                    <input class="username" name="username" type="text" placeholder="username" required>
+                    <br>
+                    <label for="password">Password: </label>
+                    <input class="password" name="password" type="password" placeholder="password" required>
+                    <br>
+                    <label for="confirm_password">Confirm password: </label>
+                    <input class="confirm_password" name="confirm_password" type="password" placeholder="confirm password"
+                        required>
+                    <br>
+                    <label for="email">Email(optional): </label>
+                    <input class="email" name="email" type="text" placeholder="email">
+                    <br><br>
+                    <button>Register</button>
+                </form>
+            </section>
 
-    </main>
+        </main>
 </body>
+
 </html>
