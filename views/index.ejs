@@ -7,14 +7,7 @@
     <title>Index</title>
 </head>
 <body>
+    <%- include("./partials/navbar.ejs")%>
     <h1>Home Page.</h1>
-    <% if(locals.currentUser){ %>
-        <br>
-        <p>Logout <a href="/logout">Logout</a></p>
-        <br>
-    <% } %>
-        <p>Login <a href="/login">Login</a></p>
-        <br>
-        <p>Register <a href="/Register">Register</a></p>
     </body>
 </html>
