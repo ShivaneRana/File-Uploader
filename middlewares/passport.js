@@ -1,6 +1,6 @@
 const localStrategy = require("passport-local");
 const bycryptjs = require("bcryptjs");
-const db = require("../db/queries.js")
+const db = require("../db/queries.js");
 
 module.exports.configurePassport = (passport) => {
 	passport.use(
@@ -13,10 +13,7 @@ module.exports.configurePassport = (passport) => {
 					return done(null, false, { message: "Incorrect username" });
 				}
 
-				const match = await bycryptjs.compare(
-					password,
-					user.password,
-				);
+				const match = await bycryptjs.compare(password, user.password);
 
 				if (!match) {
 					console.log("Login denied");
