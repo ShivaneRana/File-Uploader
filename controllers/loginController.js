@@ -1,5 +1,4 @@
 const { body, validationResult, matchedData } = require("express-validator");
-const db = require("../db/queries.js");
 const passport = require("passport");
 
 module.exports.showLoginPage = (req, res) => {
@@ -8,7 +7,7 @@ module.exports.showLoginPage = (req, res) => {
 
 module.exports.loginUser = async (req, res, next) => {
 	passport.authenticate("local", {
-		successRedirect: "/",
+		successRedirect: "/home",
 		failureRedirect: "/login",
 	})(req, res, next);
 };
