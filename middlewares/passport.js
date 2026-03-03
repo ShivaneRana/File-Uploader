@@ -6,7 +6,7 @@ module.exports.configurePassport = (passport) => {
 	passport.use(
 		new localStrategy(async (username, password, done) => {
 			try {
-				const user = db.fetchUserByUsername(username);
+				const user = await db.fetchUserByUsername(username);
 
 				if (!user) {
 					console.log("Login denied");
