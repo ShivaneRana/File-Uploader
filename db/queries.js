@@ -30,7 +30,7 @@ module.exports.fetchUserById = async (id) => {
 	return result;
 };
 
-module.exports.createNewUser = async (username, password) => {
+module.exports.createNewUser = async ({username,password, email}) => {
 	let result;
 	let hashedPassword = await bycryptjs.hash(password, 10);
 	try {
@@ -38,6 +38,7 @@ module.exports.createNewUser = async (username, password) => {
 			data: {
 				username: username,
 				password: hashedPassword,
+				email: email
 			},
 		});
 	} catch (err) {
