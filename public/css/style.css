@@ -20,7 +20,7 @@ body {
 	font-family: Arial, Helvetica, sans-serif, system-ui;
 }
 
-.navbar{
+.navbar {
 	min-width: 100vw;
 	height: 8vh;
 	display: flex;
@@ -29,33 +29,33 @@ body {
 	border-bottom: 1px solid var(--color-gray);
 }
 
-.main-container{
+.main-container {
 	padding: 20px;
 }
 
-.navbar-header{
+.navbar-header {
 	font-size: 36px;
 	font-weight: bolder;
 	text-decoration: none;
 	color: var(--font-color);
 }
 
-.navbar > div{
+.navbar > div {
 	width: 50%;
 	display: flex;
 	align-items: center;
 	margin-left: 20px;
 }
 
-.navbar > div:nth-child(1){
+.navbar > div:nth-child(1) {
 	justify-content: left;
 }
 
-.navbar > div:nth-child(2){
+.navbar > div:nth-child(2) {
 	justify-content: right;
 }
 
-.navbar > div:nth-child(2) > a{
+.navbar > div:nth-child(2) > a {
 	border-radius: 3px;
 	outline: 1px solid var(--color-gray);
 	padding: 10px 10px;
@@ -64,7 +64,7 @@ body {
 	color: var(--font-color);
 }
 
-.navbar > div:nth-child(2) > a:hover{
+.navbar > div:nth-child(2) > a:hover {
 	background-color: var(--color-hover-background);
 	color: var(--color-hover);
 	outline: 1px solid var(--color-hover);
