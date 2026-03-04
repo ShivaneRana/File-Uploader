@@ -7,7 +7,7 @@
 		"dev": "node --watch app.js",
 		"start": "node app.js",
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"pwrite": "prettier --write .",
+		"pwrite": "prettier --write . && git add --all && git commit -m 'chore: code formatted via prettier'",
 		"pcheck": "prettier --check ."
 	},
 	"repository": {
