@@ -1,10 +1,12 @@
 :root {
 	scroll-behavior: smooth;
 	--background-color: #1c1b22;
+	--background-color-input: #1a1a1e;
 	--font-color: white;
 	--color-gray: #56565f;
 	--color-hover-background: #133d57;
 	--color-hover: #69d0ff;
+	--font-default-size: 16px;
 }
 
 * {
@@ -14,7 +16,7 @@
 }
 
 body {
-	font-size: 16px;
+	font-size: var(--font-default-size);
 	background-color: var(--background-color);
 	color: var(--font-color);
 	font-family: Arial, Helvetica, sans-serif, system-ui;
@@ -31,10 +33,75 @@ body {
 
 .auth-section {
 	width: 400px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	gap: 15px;
 }
+
+.auth-section > header{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	gap: 15px;
+	margin-bottom: 5px;
+}
+
+.auth-section > header > p{
+	font-size: 14px;
+}
+
+.auth-section > header > p > a{
+	color: #69d0ff;
+}
+
+.auth-section > form{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+.auth-section > form > input{
+	width: 100%;
+	margin-top: 5px;
+	margin-bottom: 20px;
+	padding: 10px 20px;
+	font-size: var(--font-default-size);
+	outline: 1px solid var(--color-gray);
+	border-radius: 3px;
+	border: none;
+	background-color: var(--background-color-input);
+	color: var(--font-color);
+}
+
+.auth-section > form > input:focus{
+	outline: 1px solid var(--color-hover);
+}
+
+.but{
+	font-size: 16px;
+	border-radius: 3px;
+	border: none;
+	padding: 10px 10px;
+	color: var(--font-color);
+	background-color: var(--background-color);
+	outline: 1px solid var(--color-gray);
+	cursor: pointer;
+}
+
+.but:hover {
+	background-color: var(--color-hover-background);
+	color: var(--color-hover);
+	outline: 1px solid var(--color-hover);
+}
+
 
 @media screen and (max-width: 500px) {
 	.main-container {
-		padding: 10px;
+		padding: var(--font-default-size);
 	}
 }
