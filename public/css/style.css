@@ -75,12 +75,12 @@ body {
 	outline: 1px solid var(--color-hover);
 }
 
-.auth-section{
+.auth-section {
 	width: 400px;
 }
 
-@media screen and (max-width:500px){
-	.main-container{
+@media screen and (max-width: 500px) {
+	.main-container {
 		padding: 10px;
 	}
 }
