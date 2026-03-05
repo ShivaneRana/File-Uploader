@@ -1,0 +1,43 @@
+.index__main-container{
+	width: 100%;
+	min-height: 80vh;
+	display: flex;
+}
+
+.index__main-container > aside{
+    padding: 20px;
+    width: 13vw;
+    min-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-right: 1px solid var(--color-gray);
+}
+
+
+.index__link-button{
+	font-size: 13px;
+	border-radius: 3px;
+	border: none;
+	padding: 10px 10px;
+	color: var(--font-color);
+	background-color: var(--background-color);
+	outline: 1px solid var(--color-gray);
+	cursor: pointer;
+}
+
+.link-button:hover {
+	background-color: var(--color-hover-background);
+	color: var(--color-hover);
+	outline: 1px solid var(--color-hover);
+}
+
+.index__main-container > section{
+    padding: 20px;
+    width: 100%;
+}
+
+.index__main-container > section > div{
+    outline: 1px solid var(--color-gray);
+    height: 100%;
+}
