@@ -15,9 +15,10 @@
 }
 
 
-.index__link-button{
+.index__sidebar-button{
 	font-size: 13px;
 	border-radius: 3px;
+	text-align: left;
 	border: none;
 	padding: 10px 10px;
 	color: var(--font-color);
@@ -26,7 +27,7 @@
 	cursor: pointer;
 }
 
-.link-button:hover {
+.index__sidebar-button:hover {
 	background-color: var(--color-hover-background);
 	color: var(--color-hover);
 	outline: 1px solid var(--color-hover);
@@ -40,4 +41,28 @@
 .index__main-container > section > div{
     outline: 1px solid var(--color-gray);
     height: 100%;
+}
+
+.dialog-option{
+	display: absolute;
+	 top: 50%;
+	 left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0;
+  width: 400px;
+  height: 300px;
+transition: all 0.75s ease-in-out;
+  &::backdrop{
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+.index__dialog-container{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: #242428;
 }
