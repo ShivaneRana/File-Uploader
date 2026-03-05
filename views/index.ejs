@@ -6,12 +6,29 @@
     <link rel="icon" type="image/x-icon" href="/images/icon.ico">
     <link href="./css/style.css" rel="stylesheet" type="text/css">
     <link href="./css/navbar.css" rel="stylesheet" type="text/css">
+    <link href="./css/index.css" rel="stylesheet" type="text/css">
+    <script src="./js/script.js" defer></script>
     <title>Home | File depot</title>
 </head>
 <body>
     <%- include("./partials/navbar.ejs")%>
-    <main class="main-container">
-        <h1>Home Page.</h1>
+    <main class="index__main-container">
+        <aside>
+            <button class="index__sidebar-button index__dialog-open-button">Open dialog</button>
+            <a class="index__sidebar-button">New Folder</a>
+            <a class="index__sidebar-button">New File</a>
+        </aside>
+        <section>
+            <div>
+            </div>
+        </section>
     </main>
+    <dialog class="dialog-option">
+        <div class="index__dialog-container">
+            
+
+
+        </div>
+    </dialog>
     </body>
 </html>
