@@ -1,7 +1,7 @@
 :root {
 	scroll-behavior: smooth;
 	--background-color: #1c1b22;
-	--background-color-input: #1a1a1e;
+	--background-color-dialog: #242428;
 	--font-color: white;
 	--color-gray: #56565f;
 	--color-hover-background: #133d57;
