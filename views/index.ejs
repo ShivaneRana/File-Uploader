@@ -14,12 +14,29 @@
     <%- include("./partials/navbar.ejs")%>
     <main class="index__main-container">
         <aside>
-            <button class="index__sidebar-button">New File</button>
+            <button class="index__sidebar-button index__open-file-upload-dialog">New File</button>
         </aside>
         <section>
             <div>
             </div>
         </section>
+        <dialog class="index__file-upload-dialog">
+            <div class="index__file-upload-dialog-container">
+                <div class="index__file-upload-dialog-header">
+                    <p>New File</p>
+                    <button class="index__close-file-upload-dialog">&#215;</button>
+                </div>
+                <form class="index__file-upload-dialog-form">
+                    <div>
+                        <label for="index__file-upload-input"></label>
+                        <input class="index__file-upload-input" name="index__file-upload-input" type="file">
+                    </div>
+                    <div class="index__file-upload-submit">
+                        <button>Upload</button>
+                    </div>
+                </form>
+            </div>
+        </dialog>
     </main>
     </body>
 </html>
