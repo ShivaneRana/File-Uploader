@@ -48,7 +48,7 @@ app.use((req, res, next) => {
 	next();
 });
 
-app.use("/", indexRouter);
+app.use("/home", indexRouter);
 app.use("/login", loginRouter);
 app.use("/register", registerRouter);
 
