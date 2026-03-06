@@ -17,16 +17,33 @@ model Session {
   id        String   @id
   sid       String   @unique
   data      String
-  expiresAt   DateTime
+  expiresAt DateTime
 
   @@map("session")
 }
 
-model Users {
-  id Int @id @default(autoincrement())
-  username String @unique
-  password String 
-  email String?
+model User {
+  id       Int     @id @default(autoincrement())
+  username String  @unique
+  password String
+  email    String?
 
   @@map("users")
+}
+
+model Folder {
+  id    Int    @id @default(autoincrement())
+  name  String
+  files File[]
+
+  @@map("folders")
+}
+
+model File {
+  id       Int    @id @default(autoincrement())
+  name     String
+  parent   Folder @relation(fields: [folderId], references: [id])
+  folderId Int
+
+  @@map("files")
 }
