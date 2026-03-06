@@ -1,9 +1,7 @@
-const openButton = document.querySelector(".index__open-file-upload-dialog");
-const closeButton = document.querySelector(".index__close-file-upload-dialog");
-const fileUploadDialog = document.querySelector(".index__file-upload-dialog");
-const fileUploadDialogContainer = document.querySelector(
-	".index__file-upload-dialog-container",
-);
+const openButton = document.querySelector(".open-file-upload-dialog");
+const closeButton = document.querySelector(".close-file-upload-dialog");
+const fileUploadDialog = document.querySelector(".dialog-file-upload");
+const fileUploadDialogContainer = document.querySelector(".dialog-container");
 
 openButton.addEventListener("click", () => {
 	fileUploadDialog.showModal();

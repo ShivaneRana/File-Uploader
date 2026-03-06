@@ -14,24 +14,24 @@
     <%- include("./partials/navbar.ejs")%>
     <main class="index__main-container">
         <aside>
-            <button class="index__sidebar-button index__open-file-upload-dialog">New File</button>
+            <button class="index__sidebar-button open-file-upload-dialog">New File</button>
         </aside>
         <section>
             <div>
             </div>
         </section>
-        <dialog class="index__file-upload-dialog">
-            <div class="index__file-upload-dialog-container">
-                <div class="index__file-upload-dialog-header">
+        <dialog class="dialog-file-upload">
+            <div class="dialog-container">
+                <div class="dialog-header">
                     <p>New File</p>
-                    <button class="index__close-file-upload-dialog">&#215;</button>
+                    <button class="close-file-upload-dialog">&#215;</button>
                 </div>
-                <form method="post" action="/upload"  enctype="multipart/form-data" class="index__file-upload-dialog-form">
+                <form method="post" action="/upload"  enctype="multipart/form-data" class="dialog-form">
                     <div>
-                        <label for="index__file-upload-input"></label>
-                        <input id="index__file-upload-input" name="input-file" type="file">
+                        <label for="file-upload-input"></label>
+                        <input id="file-upload-input" name="input-file" type="file">
                     </div>
-                    <div class="index__file-upload-submit">
+                    <div class="dialog-footer">
                         <button>Upload</button>
                     </div>
                 </form>
