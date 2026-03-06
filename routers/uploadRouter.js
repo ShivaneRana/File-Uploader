@@ -16,14 +16,8 @@ const upload = multer({storage: storage});
 
 const uploadRouter = Router();
 
-uploadRouter.post(
-	"/",
-	isAuth,
-	upload.single("input-file"),
-	function (req, res) {
-		console.log("req file");
-		console.log(req.file);
-		return res.status(200).redirect("home");
+uploadRouter.post("/", isAuth, upload.single("input-file"), function (req, res) {
+		return res.status(200).redirect("/home");
 	},
 );
 
