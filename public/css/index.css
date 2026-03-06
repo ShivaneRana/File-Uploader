@@ -104,13 +104,13 @@
 	gap: 20px;
 }
 
-.index__file-upload-input {
+#index__file-upload-input {
 	color: var(--font-color);
 	width: 210px;
 	cursor: pointer;
 }
 
-.index__file-upload-input::file-selector-button {
+#index__file-upload-input::file-selector-button {
 	border-radius: var(--border-radius-default);
 	padding: 10px 10px;
 	color: var(--font-color);
@@ -119,7 +119,7 @@
 	margin-right: 10px;
 }
 
-.index__file-upload-input::file-selector-button:hover {
+#index__file-upload-input::file-selector-button:hover {
 	background-color: var(--color-hover-background);
 	color: var(--color-hover);
 	border: 1px solid var(--color-hover);
