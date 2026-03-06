@@ -11,6 +11,7 @@ const passport = require("passport");
 const indexRouter = require("./routers/indexRouter.js");
 const loginRouter = require("./routers/loginRouter.js");
 const registerRouter = require("./routers/registerRouter.js");
+const uploadRouter = require("./routers/uploadRouter.js");
 
 const SESSION_SECRET = process.env.SESSION_SECRET;
 
@@ -51,6 +52,7 @@ app.use((req, res, next) => {
 app.use("/", indexRouter);
 app.use("/login", loginRouter);
 app.use("/register", registerRouter);
+app.use("/upload", uploadRouter);
 
 app.get("/logout", (req, res, next) => {
 	req.logout((err) => {
