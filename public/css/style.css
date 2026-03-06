@@ -7,6 +7,7 @@
 	--color-hover-background: #133d57;
 	--color-hover: #69d0ff;
 	--font-default-size: 16px;
+	--border-radius-default: 5px;
 }
 
 * {
