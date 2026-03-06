@@ -11,9 +11,4 @@ indexRouter.get("/home", isAuth, (req, res) => {
 	return res.status(200).render("index");
 });
 
-indexRouter.post("/upload",isAuth,(req,res) => {
-	console.log("upload route hit!!!!!!");
-	return res.status(200).redirect("/");
-})
-
 module.exports = indexRouter;
