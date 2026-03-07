@@ -45,3 +45,16 @@ module.exports.createNewUser = async ({ username, password, email }) => {
 		console.error(err);
 	}
 };
+
+module.exports.createNewFolder = async({newFolderName}) => {
+	const result = await prisma.folder.create({
+		data:{
+			name: newFolderName 
+		}
+	})
+}
+
+module.exports.fetchAllFolders = async() => {
+	const result = await prisma.folder.findMany({});
+	console.log(result);
+}
