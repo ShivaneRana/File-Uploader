@@ -41,6 +41,6 @@
 	},
 	"devDependencies": {
 		"prettier": "^3.8.1",
-		"prisma": "^6.19.2"
+		"prisma": "^7.4.2"
 	}
 }
