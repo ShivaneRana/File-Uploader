@@ -7,9 +7,6 @@ module.exports.showRegisterPage = (req, res) => {
 
 module.exports.registerUser = async (req, res) => {
 	const { username, password, email } = req.body;
-	console.log(username);
-	console.log(password);
-	console.log(email);
 	await db.createNewUser({ username, password, email });
 	res.status(200).redirect("/");
 };
