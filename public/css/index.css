@@ -43,7 +43,7 @@
 }
 
 /* file upload dialog */
-.dialog-file-upload {
+.in-dialog {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -55,7 +55,7 @@
 	background-color: var(--background-color-dialog);
 }
 
-.dialog-file-upload::backdrop {
+.in-dialog::backdrop {
 	background-color: rgba(0, 0, 0, 0.5);
 }
 
@@ -81,7 +81,7 @@
 }
 
 /* close button */
-.close-file-upload-dialog {
+.close-dialog-button {
 	background-color: transparent;
 	font-size: 22px;
 	border: none;
@@ -90,7 +90,7 @@
 	cursor: pointer;
 }
 
-.close-file-upload-dialog:hover {
+.close-dialog-button:hover {
 	color: #27bafd;
 }
 
@@ -102,13 +102,13 @@
 	gap: 20px;
 }
 
-#file-upload-input {
+.form-input {
 	color: var(--font-color);
-	width: 210px;
+	width: 100%;
 	cursor: pointer;
 }
 
-#file-upload-input::file-selector-button {
+.form-input::file-selector-button {
 	border-radius: var(--border-radius-default);
 	padding: 10px 10px;
 	color: var(--font-color);
@@ -117,11 +117,13 @@
 	margin-right: 10px;
 }
 
-#file-upload-input::file-selector-button:hover {
+.form-input::file-selector-button:hover {
 	background-color: var(--color-hover-background);
 	color: var(--color-hover);
 	border: 1px solid var(--color-hover);
 }
+
+
 
 .dialog-footer {
 	display: flex;
