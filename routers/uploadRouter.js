@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const { isAuth } = require("../middlewares/isAuth.js");
 const multer = require("multer");
+const db = require("../db/queries.js");
 
 const storage = multer.diskStorage({
 	destination: function (req, file, cb) {
@@ -12,17 +13,22 @@ const storage = multer.diskStorage({
 	},
 });
 
-const upload = multer({ storage: storage });
+const fileUpload = multer({ storage: storage });
 
 const uploadRouter = Router();
 
 uploadRouter.post(
 	"/",
 	isAuth,
-	upload.single("input-file"),
+	fileUpload.single("input-file"),
 	function (req, res) {
 		return res.status(200).redirect("/home");
 	},
 );
+
+uploadRouter.post("/create-folder",isAuth,async(req,res) => {
+	const NewFolderName = (req.body['new-folder-name']);
+	return res.status(200).redirect("/home");
+})
 
 module.exports = uploadRouter;
