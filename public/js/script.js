@@ -17,7 +17,9 @@ closeButton.addEventListener("click", () => {
 	fileUploadDialog.close();
 });
 
-const openNewFolderButton = document.querySelector(".open-create-folder-dialog");
+const openNewFolderButton = document.querySelector(
+	".open-create-folder-dialog",
+);
 const closeNewFolderButton = document.querySelector(".close-folder-dialog");
 const newFolderDialog = document.querySelector(".dialog-folder-create");
 const newFolderInput = document.querySelector("#new-folder-input");

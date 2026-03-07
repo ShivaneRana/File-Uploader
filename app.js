@@ -6,7 +6,7 @@ const prisma = require("./lib/prisma.js");
 const { PrismaSessionStore } = require("@quixo3/prisma-session-store");
 const { configurePassport } = require("./middlewares/passport.js");
 const passport = require("passport");
-const compression = require('compression');
+const compression = require("compression");
 
 // Routers
 const indexRouter = require("./routers/indexRouter.js");

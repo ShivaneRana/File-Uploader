@@ -26,9 +26,9 @@ uploadRouter.post(
 	},
 );
 
-uploadRouter.post("/create-folder",isAuth,async(req,res) => {
-	const NewFolderName = (req.body['new-folder-name']);
+uploadRouter.post("/create-folder", isAuth, async (req, res) => {
+	const NewFolderName = req.body["new-folder-name"];
 	return res.status(200).redirect("/home");
-})
+});
 
 module.exports = uploadRouter;
