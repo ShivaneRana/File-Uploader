@@ -1,7 +1,7 @@
+// create file dialog
 const openButton = document.querySelector(".open-file-upload-dialog");
 const closeButton = document.querySelector(".close-file-upload-dialog");
 const fileUploadDialog = document.querySelector(".dialog-file-upload");
-const fileUploadDialogContainer = document.querySelector(".dialog-container");
 
 openButton.addEventListener("click", () => {
 	fileUploadDialog.showModal();
