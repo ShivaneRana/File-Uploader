@@ -6,6 +6,7 @@ const prisma = require("./lib/prisma.js");
 const { PrismaSessionStore } = require("@quixo3/prisma-session-store");
 const { configurePassport } = require("./middlewares/passport.js");
 const passport = require("passport");
+const compression = require('compression');
 
 // Routers
 const indexRouter = require("./routers/indexRouter.js");
@@ -22,6 +23,8 @@ const sessionStore = new PrismaSessionStore(prisma, {
 });
 
 const app = express();
+
+app.use(compression());
 app.set("view engine", "ejs");
 app.set("views", path.resolve(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
