@@ -16,11 +16,11 @@ indexRouter.get("/home", isAuth, async (req, res) => {
 	});
 });
 
-indexRouter.get("/home/folder/delete/:folderId", isAuth , async(req,res) => {
-	let {folderId} = req.params;
+indexRouter.get("/home/folder/delete/:folderId", isAuth, async (req, res) => {
+	let { folderId } = req.params;
 	folderId = Number(folderId);
-	await db.deleteFolder({id: folderId});
+	await db.deleteFolder({ id: folderId });
 	return res.status(200).redirect("/home");
-})
+});
 
 module.exports = indexRouter;

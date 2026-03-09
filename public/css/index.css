@@ -14,7 +14,7 @@
 	border-right: 1px solid var(--color-gray);
 }
 
-.folder-container{
+.folder-container {
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
@@ -42,16 +42,16 @@
 }
 
 .folder-button {
-    width: 80%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    word-break: break-all;
-    white-space: normal;
+	width: 80%;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	word-break: break-all;
+	white-space: normal;
 }
 
-.folder-delete-button{
-	font-size: 16px;	
+.folder-delete-button {
+	font-size: 16px;
 }
 
 .sidebar-break {
