@@ -28,7 +28,7 @@
 	text-align: left;
 	border: none;
 	padding: 10px 10px;
-	color: var(--font-color);
+	color: var(--color-light-gray);
 	background-color: var(--background-black);
 	outline: 1px solid var(--color-gray);
 	cursor: pointer;
@@ -61,14 +61,67 @@
 	border-bottom: 1px dashed var(--font-color);
 }
 
-.index__main-container > section {
+.filesview-container {
 	padding: 20px;
 	width: 100%;
 }
 
-.index__main-container > section > div {
-	outline: 1px solid var(--color-gray);
+.filesview-wrapper {
+	display: flex;
+	flex-direction: column;
 	height: 100%;
+	gap: 10px;
+}
+
+.filesview-row{
+	width: 100%;
+	display: flex;	
+	align-items: center;
+	justify-content: space-around;
+	cursor: pointer;
+}
+
+.filesview-row:nth-child(1){
+	margin-bottom: 10px;
+}
+
+.filesview-row > p{
+	padding: 10px;
+	color: var(--color-light-gray);
+}
+
+.filesview-header > p{
+	color: var(--font-color);
+}
+
+.filesview-header > p:hover{
+	border-radius: var(--border-radius-default);
+	background-color: var(--color-gray);
+}
+
+
+.filesview-row > p:nth-child(1){
+	width: 60%;
+}
+
+.filesview-row > p:nth-child(2){
+	width: 20%;
+}
+
+.filesview-row > p:nth-child(3){
+	width: 20%;
+}
+
+.filesview-content{
+	background-color: var(--background-black);
+	border-radius: var(--border-radius-default);
+	outline: 1px solid var(--color-gray);
+}
+
+.filesview-content:hover{
+	background-color: var(--color-hover-background);
+	color: var(--color-hover);
+	outline: 1px solid var(--color-hover);
 }
 
 /* file upload dialog */
@@ -79,7 +132,6 @@
 	transform: translate(-50%, -50%);
 	width: 400px;
 	min-height: max-content;
-	/* height: 190px; */
 	border: none;
 	padding: 0px;
 	background-color: var(--background-color-dialog);
