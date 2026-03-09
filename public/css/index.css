@@ -6,7 +6,7 @@
 
 .index__main-container > aside {
 	padding: 20px;
-	width: 13vw;
+	width: 15vw;
 	min-height: 92vh;
 	display: flex;
 	flex-direction: column;
@@ -29,7 +29,7 @@
 	border: none;
 	padding: 10px 10px;
 	color: var(--font-color);
-	background-color: var(--background-color);
+	background-color: var(--background-black);
 	outline: 1px solid var(--color-gray);
 	cursor: pointer;
 	text-decoration: none;
@@ -146,7 +146,7 @@
 	border-radius: var(--border-radius-default);
 	padding: 10px 10px;
 	color: var(--font-color);
-	background-color: var(--background-color);
+	background-color: var(--background-black);
 	border: 1px solid var(--color-gray);
 	margin-right: 10px;
 }
@@ -159,7 +159,7 @@
 
 .form-input[type="text"] {
 	margin-top: 5px;
-	background-color: var(--background-color);
+	background-color: var(--background-black);
 	padding: 12px 15px;
 	color: var(--font-color);
 	border: 1px solid var(--color-gray);
