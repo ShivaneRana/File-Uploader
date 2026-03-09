@@ -55,6 +55,14 @@ module.exports.createNewFolder = async ({ newFolderName, userId }) => {
 	});
 };
 
+module.exports.deleteFolder = async ({id}) => {
+	await prisma.folder.delete({
+		where: {
+			id : id
+		}
+	})
+}
+
 module.exports.fetchAllFolders = async ({ id }) => {
 	const result = await prisma.folder.findMany({
 		where: {
