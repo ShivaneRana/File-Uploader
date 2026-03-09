@@ -20,7 +20,7 @@
             <hr class="sidebar-break">
             <% folderList.map(folder => { %>
                 <div class="folder-container">
-                    <a class="sidebar-button folder-button" href="/home/<%= folder.name %>">
+                    <a class="sidebar-button folder-button" href="/home/<%= folder.id %>">
                         <%= folder.name %> 
                     </a>
                     <a class="sidebar-button folder-delete-button" href="/home/folder/delete/<%= folder.id%>">&#215;</a>
