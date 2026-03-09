@@ -33,22 +33,25 @@ model User {
 }
 
 model Folder {
-  id     Int    @id @default(autoincrement())
-  name   String
+  id        Int      @id @default(autoincrement())
+  name      String
   createdAt DateTime @default(now())
-  owner  User   @relation(fields: [userId], references: [id])
-  userId Int
-  files  File[]
+  owner     User     @relation(fields: [userId], references: [id])
+  userId    Int
+  files     File[]
 
   @@map("folders")
 }
 
 model File {
-  id       Int    @id @default(autoincrement())
-  name     String
-  createdAt DateTime @default(now())
-  parent   Folder @relation(fields: [folderId], references: [id])
-  folderId Int
+  id          Int      @id @default(autoincrement())
+  name        String   @default("unknown")
+  newfilename String   @default("unknown")
+  type        String   @default("unknown")
+  size        Int      @default(0)
+  createdAt   DateTime @default(now())
+  parent      Folder   @relation(fields: [folderId], references: [id])
+  folderId    Int
 
   @@map("files")
 }
