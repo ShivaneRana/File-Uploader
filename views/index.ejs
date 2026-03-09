@@ -28,8 +28,13 @@
             <% }) %>
             <% } %>
         </aside>
-        <section>
-            <div>
+        <section class="filesview-container">
+            <div class="filesview-wrapper">
+                <div class="filesview-row filesview-header">
+                    <p>Name</p>
+                    <p>Size</p>
+                    <p>Created</p>
+                </div>
             </div>
         </section>
         <%- include("./partials/dialog-file-upload.ejs") %>
