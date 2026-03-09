@@ -16,6 +16,11 @@
         <aside>
             <button class="index__sidebar-button open-file-upload-dialog">New File</button>
             <button class="index__sidebar-button open-create-folder-dialog">New Folder</button>
+            <% if(locals.folderList){ %>
+            <% folderList.map(folder => { %>
+                <button class="index__sidebar-button" ><%= folder.name %></button>
+            <% }) %>
+            <% } %>
         </aside>
         <section>
             <div>
