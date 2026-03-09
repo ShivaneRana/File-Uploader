@@ -21,24 +21,23 @@ body {
 	background-color: var(--background-color);
 	color: var(--font-color);
 	font-family: Arial, Helvetica, sans-serif, system-ui;
-    width: 100vw;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+	width: 100vw;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
 }
 
-h1{
-    font-size: 68px;
+h1 {
+	font-size: 68px;
 }
 
-p{
-    width: 400px;
-    text-align:center;
+p {
+	width: 400px;
+	text-align: center;
 }
-
 
 .link-to-homepage {
 	padding: 10px 15px;
@@ -46,10 +45,15 @@ p{
 	border: none;
 	border-radius: var(--border-radius-default);
 	cursor: pointer;
-    text-decoration: none;
-    color: black;
+	text-decoration: none;
+	color: black;
 }
 
 .link-to-homepage:hover {
-    box-shadow: cadetblue 0px 54px 55px, cadetblue 0px -12px 30px, cadetblue 0px 4px 6px, cadetblue 0px 12px 13px, cadetblue 0px -3px 5px;
+	box-shadow:
+		cadetblue 0px 54px 55px,
+		cadetblue 0px -12px 30px,
+		cadetblue 0px 4px 6px,
+		cadetblue 0px 12px 13px,
+		cadetblue 0px -3px 5px;
 }
