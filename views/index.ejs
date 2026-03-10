@@ -41,6 +41,15 @@
                     <p>Size</p>
                     <p>Created</p>
                 </div>
+                <% if(locals.filesList){ %>
+                    <% filesList.map(file => {  %>
+                        <div class="filesview-row filesview-content">
+                            <p><%= file.name%></p>
+                            <p><%= `${file.size_in_bytes}` %></p>
+                            <p><%= `${file.createdAt}` %></p>
+                        </div>
+                    <% }) %>
+                <% } %>
             </div>
         </section>
         <%- include("./partials/dialog-file-upload.ejs") %>
