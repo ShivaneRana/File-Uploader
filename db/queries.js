@@ -83,7 +83,6 @@ module.exports.createNewFile = async({originalname,filename,mimetype,size,folder
 			folderId: folderId,
 		}	
 	})
-	console.log(result);
 }
 
 module.exports.fetchFilesByFolderId = async({folderId}) => {
