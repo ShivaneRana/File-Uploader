@@ -61,6 +61,10 @@
 	border-bottom: 1px dashed var(--font-color);
 }
 
+.selected-folder{
+	background-color: var(--color-gray);
+}
+
 .filesview-container {
 	padding: 20px;
 	width: 100%;
