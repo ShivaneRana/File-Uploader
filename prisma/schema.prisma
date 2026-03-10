@@ -44,14 +44,14 @@ model Folder {
 }
 
 model File {
-  id          Int      @id @default(autoincrement())
-  name        String   @default("unknown")
-  newfilename String   @default("unknown")
-  type        String   @default("unknown")
-  size        Int      @default(0)
-  createdAt   DateTime @default(now())
-  parent      Folder   @relation(fields: [folderId], references: [id])
-  folderId    Int
+  id            Int      @id @default(autoincrement())
+  name          String   @default("unknown")
+  newfilename   String   @default("unknown")
+  type          String   @default("unknown")
+  size_in_bytes Int      @default(0)
+  createdAt     DateTime @default(now())
+  parent        Folder   @relation(fields: [folderId], references: [id])
+  folderId      Int
 
   @@map("files")
 }
