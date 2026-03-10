@@ -16,8 +16,17 @@
         <aside>
             <button class="sidebar-button open-file-upload-dialog">New File</button>
             <button class="sidebar-button open-create-folder-dialog">New Folder</button>
-            <% if(locals.folderList.length !== 0){ %>
             <hr class="sidebar-break">
+            <% if(locals.currentFolderId === undefined){ %>
+                <a class="sidebar-button folder-button selected-folder" href="/home" style="width: 100%;">
+                    <%= locals.currentUser.username %>
+                </a>
+            <% }else{ %>
+                <a class="sidebar-button folder-button" href="/home" style="width: 100%;">
+                    <%= locals.currentUser.username %>
+                </a>
+            <% } %>
+            <% if(locals.folderList.length !== 0){ %>
             <% folderList.map(folder => { %>
                 <div class="folder-container">
                     <% if(locals.currentFolderId === folder.id){ %>
