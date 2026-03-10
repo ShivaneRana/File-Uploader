@@ -61,7 +61,7 @@
 	border-bottom: 1px dashed var(--font-color);
 }
 
-.selected-folder{
+.selected-folder {
 	background-color: var(--color-gray);
 }
 

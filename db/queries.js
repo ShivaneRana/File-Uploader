@@ -67,13 +67,19 @@ module.exports.fetchAllFolders = async ({ id }) => {
 	const result = await prisma.folder.findMany({
 		where: {
 			userId: id,
-		}
+		},
 	});
 
 	return result;
 };
 
-module.exports.createNewFile = async({originalname,filename,mimetype,size,folderId}) => {
+module.exports.createNewFile = async ({
+	originalname,
+	filename,
+	mimetype,
+	size,
+	folderId,
+}) => {
 	const result = await prisma.file.create({
 		data: {
 			name: originalname,
@@ -81,26 +87,26 @@ module.exports.createNewFile = async({originalname,filename,mimetype,size,folder
 			type: mimetype,
 			size_in_bytes: size,
 			folderId: folderId,
-		}	
-	})
-}
+		},
+	});
+};
 
-module.exports.fetchFilesByFolderId = async({folderId}) => {
+module.exports.fetchFilesByFolderId = async ({ folderId }) => {
 	const result = await prisma.file.findMany({
 		where: {
-			folderId: folderId
-		}
-	})
+			folderId: folderId,
+		},
+	});
 
 	return result;
-}
+};
 
-module.exports.deleteFilesByFolderId = async({folderId}) => {
+module.exports.deleteFilesByFolderId = async ({ folderId }) => {
 	const result = await prisma.file.deleteMany({
 		where: {
-			folderId: folderId 
-		}
-	})
+			folderId: folderId,
+		},
+	});
 
 	return result;
-}
+};

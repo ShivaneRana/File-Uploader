@@ -22,11 +22,17 @@ uploadRouter.post(
 	isAuth,
 	fileUpload.single("input-file"),
 	async function (req, res) {
-		const {originalname,filename,mimetype,size} = req.file;
+		const { originalname, filename, mimetype, size } = req.file;
 
 		// just for dev environment
 		const fid = 27;
-		await db.createNewFile({originalname,filename,mimetype,size,folderId:fid})
+		await db.createNewFile({
+			originalname,
+			filename,
+			mimetype,
+			size,
+			folderId: fid,
+		});
 		return res.status(200).redirect("/home");
 	},
 );
