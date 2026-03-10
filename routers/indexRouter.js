@@ -32,8 +32,6 @@ indexRouter.get("/home/:folderId", isAuth, async (req, res) => {
 		};
 	})
 
-	console.log(files)
-
 	const userId = Number(req.user.id);
 	const folderList = await db.fetchAllFolders({ id: userId });
 
