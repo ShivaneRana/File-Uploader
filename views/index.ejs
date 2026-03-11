@@ -50,10 +50,25 @@
                     <p>Size</p>
                     <p>Created</p>
                 </div>
+                <% if(locals.childFolders){ %>
+                    <% childFolders.map(folder => {  %>
+                        <div class="filesview-row filesview-content">
+                            <div>
+                                <img src="/images/folder.svg">
+                                <p><%= folder.name%></p>
+                            </div>
+                            <p>===</p>
+                            <p><%= `${folder.createdAt}` %></p>
+                        </div>
+                    <% }) %>
+                <% } %>
                 <% if(locals.filesList){ %>
                     <% filesList.map(file => {  %>
                         <div class="filesview-row filesview-content">
-                            <p><%= file.name%></p>
+                            <div>
+                                <img src="/images/file.svg">
+                                <p><%= file.name%></p>
+                            </div>
                             <p><%= `${file.size_in_bytes}` %></p>
                             <p><%= `${file.createdAt}` %></p>
                         </div>
