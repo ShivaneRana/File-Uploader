@@ -51,8 +51,8 @@ model File {
   type          String   @default("unknown")
   size_in_bytes Int      @default(0)
   createdAt     DateTime @default(now())
-  parent        Folder   @relation(fields: [folderId], references: [id])
-  folderId      Int      @default(0)
+  parent        Folder?   @relation(fields: [folderId], references: [id])
+  folderId      Int?
 
   @@map("files")
 }
