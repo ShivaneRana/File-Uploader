@@ -76,10 +76,14 @@ module.exports.fetchAllFoldersByUserId = async ({ id }) => {
 	return result;
 };
 
-module.exports.fetchAllFolderByParentId = async ({ parentId }) => {
+module.exports.fetchAllFolderByParentId = async ({ userId,parentId }) => {
 	const result = await prisma.folder.findMany({
 		where: {
-			parentId: id,
+			parentId: parentId,
+			AND: [
+				{parentId: parentId},
+				{userId: userId}
+			]
 		},
 		orderBy: {
 			name: 'asc'
