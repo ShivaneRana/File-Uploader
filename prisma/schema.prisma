@@ -36,7 +36,7 @@ model Folder {
   id        Int      @id @default(autoincrement())
   name      String
   createdAt DateTime @default(now())
-  parentId  Int      @default(0)
+  parentId  Int?     
   owner     User     @relation(fields: [userId], references: [id])
   userId    Int
   files     File[]
