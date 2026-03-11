@@ -52,7 +52,7 @@ model File {
   size_in_bytes Int      @default(0)
   createdAt     DateTime @default(now())
   parent        Folder   @relation(fields: [folderId], references: [id])
-  folderId      Int
+  folderId      Int      @default(0)
 
   @@map("files")
 }
