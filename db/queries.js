@@ -68,6 +68,9 @@ module.exports.fetchAllFolders = async ({ id }) => {
 		where: {
 			userId: id,
 		},
+		orderBy: {
+			name: 'asc'
+		}
 	});
 
 	return result;
