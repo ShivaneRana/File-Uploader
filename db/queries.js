@@ -63,10 +63,23 @@ module.exports.deleteFolder = async ({ id }) => {
 	});
 };
 
-module.exports.fetchAllFolders = async ({ id }) => {
+module.exports.fetchAllFoldersByUserId = async ({ id }) => {
 	const result = await prisma.folder.findMany({
 		where: {
 			userId: id,
+		},
+		orderBy: {
+			name: 'asc'
+		}
+	});
+
+	return result;
+};
+
+module.exports.fetchAllFolderByParentId = async ({ parentId }) => {
+	const result = await prisma.folder.findMany({
+		where: {
+			parentId: id,
 		},
 		orderBy: {
 			name: 'asc'
