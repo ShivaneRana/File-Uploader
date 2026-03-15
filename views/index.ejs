@@ -52,14 +52,14 @@
                 </div>
                 <% if(locals.childFolders){ %>
                     <% childFolders.map(folder => {  %>
-                        <div class="filesview-row filesview-content">
+                        <a class="filesview-row filesview-content" href="/home/<%= folder.id %>">
                             <div>
                                 <img src="/images/folder.svg">
                                 <p><%= folder.name%></p>
                             </div>
                             <p>===</p>
                             <p><%= `${folder.createdAt}` %></p>
-                        </div>
+                        </a>
                     <% }) %>
                 <% } %>
                 <% if(locals.filesList){ %>
