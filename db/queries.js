@@ -1,5 +1,7 @@
 const prisma = require("../lib/prisma.js");
 const bycryptjs = require("bcryptjs");
+const getMonth = require("../public/js/getMonths.js");
+const getSize = require("../public/js/getSize.js");
 
 module.exports.fetchUserByUsername = async (username) => {
 	let result;
@@ -46,11 +48,12 @@ module.exports.createNewUser = async ({ username, password, email }) => {
 	}
 };
 
-module.exports.createNewFolder = async ({ newFolderName, userId }) => {
+module.exports.createNewFolder = async ({ newFolderName, userId , parentId}) => {
 	const result = await prisma.folder.create({
 		data: {
 			name: newFolderName,
 			userId: userId,
+			parentId: parentId
 		},
 	});
 };
@@ -77,7 +80,7 @@ module.exports.fetchAllFoldersByUserId = async ({ id }) => {
 };
 
 module.exports.fetchAllFolderByParentId = async ({ userId,parentId }) => {
-	const result = await prisma.folder.findMany({
+	let result = await prisma.folder.findMany({
 		where: {
 			parentId: parentId,
 			AND: [
@@ -89,6 +92,13 @@ module.exports.fetchAllFolderByParentId = async ({ userId,parentId }) => {
 			name: 'asc'
 		}
 	});
+
+	result = result.map((folder) => {
+		return{
+			...folder,
+			createdAt: `${getMonth(folder.createdAt.getMonth())} ${folder.createdAt.getDate()}, ${folder.createdAt.getFullYear()}`,
+		}
+	})
 
 	return result;
 };
@@ -112,10 +122,18 @@ module.exports.createNewFile = async ({
 };
 
 module.exports.fetchFilesByFolderId = async ({ folderId }) => {
-	const result = await prisma.file.findMany({
+	let result = await prisma.file.findMany({
 		where: {
 			folderId: folderId,
 		},
+	});
+
+	result = result.map((file) => {
+		return {
+			...file,
+			size_in_bytes: getSize(file.size_in_bytes),
+			createdAt: `${getMonth(file.createdAt.getMonth())} ${file.createdAt.getDate()}, ${file.createdAt.getFullYear()}`,
+		};
 	});
 
 	return result;
