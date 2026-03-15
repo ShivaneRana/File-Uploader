@@ -12,9 +12,33 @@ indexRouter.get("/", isAuth, (req, res) => {
 
 indexRouter.get("/home", isAuth, async (req, res) => {
 	const userId = Number(req.user.id);
-	const folderList = await db.fetchAllFolders({ id: userId });
+	const folderList = await db.fetchAllFoldersByUserId({ id: userId });
+
+	// files and folder present inside home directory have null folderId and parentId
+	let files = await db.fetchFilesByFolderId({ folderId: undefined});
+	let childFolders = await db.fetchAllFolderByParentId({ userId,parentId: undefined})
+
+	childFolders = childFolders.map((folder) => {
+		return{
+			...folder,
+			createdAt: `${getMonth(folder.createdAt.getMonth())} ${folder.createdAt.getDate()}, ${folder.createdAt.getFullYear()}`,
+		}
+	})
+
+	// this is for formatting data for better readability
+	files = files.map((file) => {
+		return {
+			...file,
+			size_in_bytes: getSize(file.size_in_bytes),
+			createdAt: `${getMonth(file.createdAt.getMonth())} ${file.createdAt.getDate()}, ${file.createdAt.getFullYear()}`,
+		};
+	});
+
 	return res.status(200).render("index", {
+		currentFolderId: undefined,
 		folderList,
+		filesList: files,
+		childFolders
 	});
 });
 
@@ -33,7 +57,7 @@ indexRouter.get("/home/:folderId", isAuth, async (req, res) => {
 	});
 
 	const userId = Number(req.user.id);
-	const folderList = await db.fetchAllFolders({ id: userId });
+	const folderList = await db.fetchAllFoldersByUserId({ id: userId });
 
 	return res.status(200).render("index", {
 		folderList,
