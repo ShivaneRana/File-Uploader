@@ -120,6 +120,8 @@
 	background-color: var(--background-black);
 	border-radius: var(--border-radius-default);
 	outline: 1px solid var(--color-gray);
+	text-decoration: none;
+	color: var(--font-color);
 }
 
 /* for image and  name*/
