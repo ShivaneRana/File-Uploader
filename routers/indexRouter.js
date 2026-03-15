@@ -30,11 +30,13 @@ indexRouter.get("/home/:folderId", isAuth, async (req, res) => {
 	const userId = Number(req.user.id);
 	const folderList = await db.fetchAllFoldersByUserId({ id: userId });
 	let files = await db.fetchFilesByFolderId({ folderId });
+	let childFolders = await db.fetchAllFolderByParentId({ userId,parentId: folderId})
 
 	return res.status(200).render("index", {
 		folderList,
 		currentFolderId: folderId,
 		filesList: files,
+		childFolders
 	});
 });
 
