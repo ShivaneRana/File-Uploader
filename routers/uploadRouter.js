@@ -18,7 +18,7 @@ const fileUpload = multer({ storage: storage });
 const uploadRouter = Router();
 
 uploadRouter.post(
-	"/",
+	"/create-file",
 	isAuth,
 	fileUpload.single("input-file"),
 	async function (req, res) {
@@ -35,7 +35,7 @@ uploadRouter.post(
 );
 
 uploadRouter.post(
-	"/:targetId",
+	"/create-file/:targetId",
 	isAuth,
 	fileUpload.single("input-file"),
 	async function (req, res) {
@@ -55,16 +55,15 @@ uploadRouter.post(
 	},
 );
 
-uploadRouter.post("/create-folder/", isAuth, async (req, res) => {
+uploadRouter.post("/create-folder", isAuth, async (req, res) => {
 	const newFolderName = req.body["new-folder-name"];
 	const userId = req.user.id;
 
-	await db.createNewFolder({ newFolderName, userId });
+	await db.createNewFolder({ newFolderName, userId});
 	return res.status(200).redirect("/home");
 });
 
 uploadRouter.post("/create-folder/:targetId", isAuth, async (req, res) => {
-	console.log("uploadRouter targetId");
 	let { targetId } = req.params;
 	let parentId = Number(targetId);
 	const newFolderName = req.body["new-folder-name"];
