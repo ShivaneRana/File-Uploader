@@ -40,15 +40,15 @@ uploadRouter.post(
 	fileUpload.single("input-file"),
 	async function (req, res) {
 		const { originalname, filename, mimetype, size } = req.file;
-		const {targetId} = req.params;
-		const folderId = Number(targetId)
+		const { targetId } = req.params;
+		const folderId = Number(targetId);
 
 		await db.createNewFile({
 			originalname,
 			filename,
 			mimetype,
 			size,
-			folderId
+			folderId,
 		});
 
 		return res.status(200).redirect(`/home/${folderId}`);
@@ -64,13 +64,13 @@ uploadRouter.post("/create-folder/", isAuth, async (req, res) => {
 });
 
 uploadRouter.post("/create-folder/:targetId", isAuth, async (req, res) => {
-	console.log("uploadRouter targetId")
-	let {targetId} = req.params;
+	console.log("uploadRouter targetId");
+	let { targetId } = req.params;
 	let parentId = Number(targetId);
 	const newFolderName = req.body["new-folder-name"];
 	const userId = req.user.id;
 
-	await db.createNewFolder({ newFolderName, userId , parentId});
+	await db.createNewFolder({ newFolderName, userId, parentId });
 	return res.status(200).redirect(`/home/${parentId}`);
 });
 

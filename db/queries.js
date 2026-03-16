@@ -48,12 +48,16 @@ module.exports.createNewUser = async ({ username, password, email }) => {
 	}
 };
 
-module.exports.createNewFolder = async ({ newFolderName, userId , parentId}) => {
+module.exports.createNewFolder = async ({
+	newFolderName,
+	userId,
+	parentId,
+}) => {
 	const result = await prisma.folder.create({
 		data: {
 			name: newFolderName,
 			userId: userId,
-			parentId: parentId
+			parentId: parentId,
 		},
 	});
 };
@@ -72,32 +76,29 @@ module.exports.fetchAllFoldersByUserId = async ({ id }) => {
 			userId: id,
 		},
 		orderBy: {
-			name: 'asc'
-		}
+			name: "asc",
+		},
 	});
 
 	return result;
 };
 
-module.exports.fetchAllFolderByParentId = async ({ userId,parentId}) => {
+module.exports.fetchAllFolderByParentId = async ({ userId, parentId }) => {
 	let result = await prisma.folder.findMany({
 		where: {
-			AND: [
-				{parentId: parentId ?? null},
-				{userId: userId}
-			]
+			AND: [{ parentId: parentId ?? null }, { userId: userId }],
 		},
 		orderBy: {
-			name: 'asc'
-		}
+			name: "asc",
+		},
 	});
 
 	result = result.map((folder) => {
-		return{
+		return {
 			...folder,
 			createdAt: `${getMonth(folder.createdAt.getMonth())} ${folder.createdAt.getDate()}, ${folder.createdAt.getFullYear()}`,
-		}
-	})
+		};
+	});
 
 	return result;
 };
@@ -120,7 +121,7 @@ module.exports.createNewFile = async ({
 	});
 };
 
-module.exports.fetchFilesByFolderId = async ({ folderId}) => {
+module.exports.fetchFilesByFolderId = async ({ folderId }) => {
 	let result = await prisma.file.findMany({
 		where: {
 			folderId: folderId ?? null,
@@ -134,7 +135,6 @@ module.exports.fetchFilesByFolderId = async ({ folderId}) => {
 			createdAt: `${getMonth(file.createdAt.getMonth())} ${file.createdAt.getDate()}, ${file.createdAt.getFullYear()}`,
 		};
 	});
-
 
 	return result;
 };

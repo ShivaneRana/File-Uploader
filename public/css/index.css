@@ -125,7 +125,7 @@
 }
 
 /* for image and  name*/
-.filesview-content > div{
+.filesview-content > div {
 	width: 60%;
 	display: flex;
 	justify-content: flex-start;
@@ -134,7 +134,7 @@
 	padding: 10px;
 }
 
-.filesview-content > div > img{
+.filesview-content > div > img {
 	width: 25px;
 	height: 25px;
 }

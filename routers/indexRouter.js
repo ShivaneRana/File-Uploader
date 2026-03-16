@@ -13,14 +13,17 @@ indexRouter.get("/home", isAuth, async (req, res) => {
 	const folderList = await db.fetchAllFoldersByUserId({ id: userId });
 
 	// files and folder present inside home directory have null folderId and parentId
-	let files = await db.fetchFilesByFolderId({ folderId: undefined});
-	let childFolders = await db.fetchAllFolderByParentId({ userId,parentId: undefined})
+	let files = await db.fetchFilesByFolderId({ folderId: undefined });
+	let childFolders = await db.fetchAllFolderByParentId({
+		userId,
+		parentId: undefined,
+	});
 
 	return res.status(200).render("index", {
 		currentFolderId: undefined,
 		folderList,
 		filesList: files,
-		childFolders
+		childFolders,
 	});
 });
 
@@ -30,13 +33,16 @@ indexRouter.get("/home/:folderId", isAuth, async (req, res) => {
 	const userId = Number(req.user.id);
 	const folderList = await db.fetchAllFoldersByUserId({ id: userId });
 	let files = await db.fetchFilesByFolderId({ folderId });
-	let childFolders = await db.fetchAllFolderByParentId({ userId,parentId: folderId})
+	let childFolders = await db.fetchAllFolderByParentId({
+		userId,
+		parentId: folderId,
+	});
 
 	return res.status(200).render("index", {
 		folderList,
 		currentFolderId: folderId,
 		filesList: files,
-		childFolders
+		childFolders,
 	});
 });
 
