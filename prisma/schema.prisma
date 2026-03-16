@@ -36,7 +36,7 @@ model Folder {
   id        Int      @id @default(autoincrement())
   name      String
   createdAt DateTime @default(now())
-  parentId  Int?     
+  parentId  Int?
   owner     User     @relation(fields: [userId], references: [id])
   userId    Int
   files     File[]
@@ -51,7 +51,7 @@ model File {
   type          String   @default("unknown")
   size_in_bytes Int      @default(0)
   createdAt     DateTime @default(now())
-  parent        Folder?   @relation(fields: [folderId], references: [id])
+  parent        Folder?  @relation(fields: [folderId], references: [id])
   folderId      Int?
 
   @@map("files")
