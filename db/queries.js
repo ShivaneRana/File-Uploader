@@ -79,12 +79,11 @@ module.exports.fetchAllFoldersByUserId = async ({ id }) => {
 	return result;
 };
 
-module.exports.fetchAllFolderByParentId = async ({ userId,parentId }) => {
+module.exports.fetchAllFolderByParentId = async ({ userId,parentId}) => {
 	let result = await prisma.folder.findMany({
 		where: {
-			parentId: parentId,
 			AND: [
-				{parentId: parentId},
+				{parentId: parentId ?? null},
 				{userId: userId}
 			]
 		},
@@ -121,10 +120,10 @@ module.exports.createNewFile = async ({
 	});
 };
 
-module.exports.fetchFilesByFolderId = async ({ folderId }) => {
+module.exports.fetchFilesByFolderId = async ({ folderId}) => {
 	let result = await prisma.file.findMany({
 		where: {
-			folderId: folderId,
+			folderId: folderId ?? null,
 		},
 	});
 
@@ -135,6 +134,7 @@ module.exports.fetchFilesByFolderId = async ({ folderId }) => {
 			createdAt: `${getMonth(file.createdAt.getMonth())} ${file.createdAt.getDate()}, ${file.createdAt.getFullYear()}`,
 		};
 	});
+
 
 	return result;
 };
