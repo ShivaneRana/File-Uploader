@@ -59,7 +59,7 @@ uploadRouter.post("/create-folder", isAuth, async (req, res) => {
 	const newFolderName = req.body["new-folder-name"];
 	const userId = req.user.id;
 
-	await db.createNewFolder({ newFolderName, userId});
+	await db.createNewFolder({ newFolderName, userId });
 	return res.status(200).redirect("/home");
 });
 
