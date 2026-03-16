@@ -4,7 +4,7 @@
                     <p>New Folder</p>
                     <button class="close-folder-dialog close-dialog-button">&#215;</button>
                 </div>
-                <form method="post" action="/upload/create-folder" class="dialog-form">
+                <form method="post" action="/upload/create-folder/<%= locals.currentFolderId %>" class="dialog-form">
                     <div>
                         <label for="new-folder-input">Name</label>
                         <input id="new-folder-input" maxlength="30" class="form-input" name="new-folder-name" type="text">
