@@ -4,7 +4,7 @@
                     <p>New File</p>
                     <button class="close-file-upload-dialog close-dialog-button">&#215;</button>
                 </div>
-                <form method="post" action="/upload/<%= locals.currentFolderId %>"  enctype="multipart/form-data" class="dialog-form">
+                <form method="post" action="/upload/create-file/<%= locals.currentFolderId %>"  enctype="multipart/form-data" class="dialog-form">
                     <div>
                         <label for="file-upload-input"></label>
                         <input id="file-upload-input" class="form-input" name="input-file" type="file">
