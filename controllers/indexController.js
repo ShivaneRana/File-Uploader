@@ -1,10 +1,10 @@
 const db = require("../db/queries.js");
 
-exports.redirectToHomePage = async(req,res) => {
+exports.redirectToHomePage = async (req, res) => {
 	return res.status(200).redirect("/home");
-}
+};
 
-exports.renderHomePage = async(req,res) => {
+exports.renderHomePage = async (req, res) => {
 	const userId = Number(req.user.id);
 	const folderList = await db.fetchAllFoldersByUserId({ id: userId });
 
@@ -21,9 +21,9 @@ exports.renderHomePage = async(req,res) => {
 		filesList: files,
 		childFolders,
 	});
-}
+};
 
-exports.renderSpecificPage = async(req,res) => {
+exports.renderSpecificPage = async (req, res) => {
 	let { folderId } = req.params;
 	folderId = Number(folderId);
 	const userId = Number(req.user.id);
@@ -40,9 +40,9 @@ exports.renderSpecificPage = async(req,res) => {
 		filesList: files,
 		childFolders,
 	});
-}
+};
 
-exports.deleteFolder = async(req,res) => {
+exports.deleteFolder = async (req, res) => {
 	let { folderId } = req.params;
 	folderId = Number(folderId);
 
@@ -50,4 +50,4 @@ exports.deleteFolder = async(req,res) => {
 	await db.deleteFilesByFolderId({ folderId: folderId });
 	await db.deleteFolder({ id: folderId });
 	return res.status(200).redirect("/home");
-}
+};

@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const { isAuth } = require("../middlewares/isAuth.js");
 const multer = require("multer");
-const uploadController = require('../controllers/uploadController.js');
+const uploadController = require("../controllers/uploadController.js");
 
 const storage = multer.diskStorage({
 	destination: function (req, file, cb) {
@@ -21,17 +21,25 @@ uploadRouter.post(
 	"/create-file",
 	isAuth,
 	fileUpload.single("input-file"),
-	uploadController.createFileAtHome
+	uploadController.createFileAtHome,
 );
 
 uploadRouter.post(
 	"/create-file/:targetId",
 	isAuth,
 	fileUpload.single("input-file"),
-	uploadController.createFileAtSpecificFolder
+	uploadController.createFileAtSpecificFolder,
 );
 
-uploadRouter.post("/create-folder", isAuth, uploadController.createFolderAtHome);
-uploadRouter.post("/create-folder/:targetId", isAuth ,uploadController.createFolderAtSpecificFolder);
+uploadRouter.post(
+	"/create-folder",
+	isAuth,
+	uploadController.createFolderAtHome,
+);
+uploadRouter.post(
+	"/create-folder/:targetId",
+	isAuth,
+	uploadController.createFolderAtSpecificFolder,
+);
 
 module.exports = uploadRouter;
