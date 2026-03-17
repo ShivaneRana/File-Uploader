@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const { isAuth } = require("../middlewares/isAuth.js");
 const multer = require("multer");
-const db = require("../db/queries.js");
+const uploadController = require('../controllers/uploadController.js');
 
 const storage = multer.diskStorage({
 	destination: function (req, file, cb) {
@@ -21,56 +21,17 @@ uploadRouter.post(
 	"/create-file",
 	isAuth,
 	fileUpload.single("input-file"),
-	async function (req, res) {
-		const { originalname, filename, mimetype, size } = req.file;
-
-		await db.createNewFile({
-			originalname,
-			filename,
-			mimetype,
-			size,
-		});
-		return res.status(200).redirect("/home");
-	},
+	uploadController.createFileAtHome
 );
 
 uploadRouter.post(
 	"/create-file/:targetId",
 	isAuth,
 	fileUpload.single("input-file"),
-	async function (req, res) {
-		const { originalname, filename, mimetype, size } = req.file;
-		const { targetId } = req.params;
-		const folderId = Number(targetId);
-
-		await db.createNewFile({
-			originalname,
-			filename,
-			mimetype,
-			size,
-			folderId,
-		});
-
-		return res.status(200).redirect(`/home/${folderId}`);
-	},
+	uploadController.createFileAtSpecificFolder
 );
 
-uploadRouter.post("/create-folder", isAuth, async (req, res) => {
-	const newFolderName = req.body["new-folder-name"];
-	const userId = req.user.id;
-
-	await db.createNewFolder({ newFolderName, userId });
-	return res.status(200).redirect("/home");
-});
-
-uploadRouter.post("/create-folder/:targetId", isAuth, async (req, res) => {
-	let { targetId } = req.params;
-	let parentId = Number(targetId);
-	const newFolderName = req.body["new-folder-name"];
-	const userId = req.user.id;
-
-	await db.createNewFolder({ newFolderName, userId, parentId });
-	return res.status(200).redirect(`/home/${parentId}`);
-});
+uploadRouter.post("/create-folder", isAuth, uploadController.createFolderAtHome);
+uploadRouter.post("/create-folder/:targetId", isAuth ,uploadController.createFolderAtSpecificFolder);
 
 module.exports = uploadRouter;
