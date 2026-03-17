@@ -258,7 +258,7 @@
 	cursor: pointer;
 }
 
-.file-info-div{
+.file-info-div {
 	position: absolute;
 	right: -400px;
 	top: 0;
@@ -268,10 +268,10 @@
 	transition: right 0.75s ease;
 }
 
-.show-info{
+.show-info {
 	right: 0px;
 }
 
-.hide-info{
+.hide-info {
 	right: -400px;
 }
