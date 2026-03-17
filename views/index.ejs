@@ -8,6 +8,7 @@
     <link href="/css/navbar.css" rel="stylesheet" type="text/css">
     <link href="/css/index.css" rel="stylesheet" type="text/css">
     <script src="/js/script.js" defer></script>
+    <script src="/js/displayFileInfo.js" defer></script>
     <title>Home | File depot</title>
 </head>
 <body>
@@ -64,7 +65,7 @@
                 <% } %>
                 <% if(locals.filesList){ %>
                     <% filesList.map(file => {  %>
-                        <div class="filesview-row filesview-content">
+                        <div class="filesview-row filesview-content uploaded-files" data-name="<%= file.name %>" data-size="<%= file.size_in_bytes %>" data-date="<%= file.createdAt %>" data-type="<%= file.type %>">
                             <div>
                                 <img src="/images/file.svg">
                                 <p><%= file.name%></p>
@@ -79,5 +80,7 @@
         <%- include("./partials/dialog-file-upload.ejs") %>
         <%- include("./partials/dialog-folder-create.ejs") %>
     </main>
+    <div class="file-info-div hide-info">
+    </div>
     </body>
 </html>
