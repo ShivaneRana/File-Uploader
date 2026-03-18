@@ -67,7 +67,7 @@
                 <% } %>
                 <% if(locals.filesList){ %>
                     <% filesList.map(file => {  %>
-                        <div class="filesview-row filesview-content uploaded-files" data-name="<%= file.name %>" data-size="<%= file.size_in_bytes %>" data-date="<%= file.createdAt %>" data-type="<%= file.type %>">
+                        <div class="filesview-row filesview-content uploaded-files" data-id="<%= file.id %>" data-name="<%= file.name %>" data-size="<%= file.size_in_bytes %>" data-date="<%= file.createdAt %>" data-type="<%= file.type %>" date-id="<%= file.id %>" >
                             <div>
                                 <img src="/images/file.svg">
                                 <p><%= file.name%></p>
