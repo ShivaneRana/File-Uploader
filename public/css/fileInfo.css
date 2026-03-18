@@ -14,7 +14,7 @@
 	transition: right 0.5s ease;
 }
 
-.file-info-div::backdrop{
+.file-info-div::backdrop {
 	background-color: yellow;
 }
 
@@ -26,21 +26,23 @@
 	right: -400px;
 }
 
-.file-info-content,.file-info-footer,.file-info-header{
+.file-info-content,
+.file-info-footer,
+.file-info-header {
 	width: 100%;
 	display: flex;
 }
 
-.file-info-header{
-	justify-content: space-between;	
+.file-info-header {
+	justify-content: space-between;
 }
 
-.file-info-header > h3{
+.file-info-header > h3 {
 	font-size: 20px;
 	font-weight: 100;
 }
 
-.file-info-header > button{
+.file-info-header > button {
 	width: 35px;
 	background-color: transparent;
 	border: none;
@@ -49,26 +51,26 @@
 	cursor: pointer;
 }
 
-.file-info-header > button:hover{
+.file-info-header > button:hover {
 	color: var(--color-hover);
 }
 
-.file-info-content{
+.file-info-content {
 	flex-direction: column;
 	min-height: 80vh;
 }
 
-.file-info-content > p{
+.file-info-content > p {
 	color: var(--font-color);
 	font-size: 16px;
 	margin-bottom: 10px;
 }
 
-.file-info-footer{
-	justify-content: space-around;	
+.file-info-footer {
+	justify-content: space-around;
 }
 
-.file-info-footer > button{
+.file-info-footer > button {
 	font-size: 14px;
 	font-weight: bolder;
 	border-radius: 3px;
@@ -83,13 +85,13 @@
 	text-decoration: none;
 }
 
-.file-info-footer > button:hover{
+.file-info-footer > button:hover {
 	background-color: var(--color-hover-background);
 	color: var(--color-hover);
 	outline: 1px solid var(--color-hover);
 }
 
-.file-info-footer > a{
+.file-info-footer > a {
 	font-size: 14px;
 	font-weight: bolder;
 	border-radius: 3px;
@@ -104,13 +106,13 @@
 	text-decoration: none;
 }
 
-.file-info-footer > a:hover{
+.file-info-footer > a:hover {
 	background-color: var(--color-hover-background);
 	color: var(--color-hover);
 	outline: 1px solid var(--color-hover);
 }
 
-.file-info-div > .file-info-footer > a:nth-child(4){
+.file-info-div > .file-info-footer > a:nth-child(4) {
 	background-color: var(--color-hover);
 	color: black;
 }
