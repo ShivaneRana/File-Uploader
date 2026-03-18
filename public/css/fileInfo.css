@@ -1,0 +1,17 @@
+.file-info-div {
+	position: absolute;
+	right: -400px;
+	top: 0;
+	width: 400px;
+	min-height: 100vh;
+	background-color: red;
+	transition: right 0.5s ease;
+}
+
+.show-info {
+	right: 0px;
+}
+
+.hide-info {
+	right: -400px;
+}
