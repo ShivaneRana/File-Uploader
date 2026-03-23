@@ -149,13 +149,13 @@ module.exports.deleteFilesByFolderId = async ({ folderId }) => {
 	return result;
 };
 
-module.exports.renameFolderById = async({folderId,newName}) => {
+module.exports.renameFolderById = async ({ folderId, newName }) => {
 	await prisma.folder.update({
 		where: {
-			id: folderId
+			id: folderId,
 		},
 		data: {
-			name: newName	
-		}
-	})
-}
+			name: newName,
+		},
+	});
+};
