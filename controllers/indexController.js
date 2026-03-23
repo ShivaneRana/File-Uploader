@@ -6,7 +6,7 @@ exports.redirectToHomePage = async (req, res) => {
 
 exports.renderHomePage = async (req, res) => {
 	const userId = Number(req.user.id);
-	const folderList = await db.fetchAllFoldersByUserId({ id: userId });
+	// const folderList = await db.fetchAllFoldersByUserId({ id: userId });
 
 	// files and folder present inside home directory have null folderId and parentId
 	let files = await db.fetchFilesByFolderId({ folderId: undefined });
@@ -17,7 +17,7 @@ exports.renderHomePage = async (req, res) => {
 
 	return res.status(200).render("index", {
 		currentFolderId: undefined,
-		folderList,
+		folderList: childFolders,
 		filesList: files,
 		childFolders,
 	});
@@ -27,7 +27,8 @@ exports.renderSpecificPage = async (req, res) => {
 	let { folderId } = req.params;
 	folderId = Number(folderId);
 	const userId = Number(req.user.id);
-	const folderList = await db.fetchAllFoldersByUserId({ id: userId });
+
+	// const folderList = await db.fetchAllFoldersByUserId({ id: userId });
 	let files = await db.fetchFilesByFolderId({ folderId });
 	let childFolders = await db.fetchAllFolderByParentId({
 		userId,
@@ -35,7 +36,7 @@ exports.renderSpecificPage = async (req, res) => {
 	});
 
 	return res.status(200).render("index", {
-		folderList,
+		folderList: childFolders,
 		currentFolderId: folderId,
 		filesList: files,
 		childFolders,
