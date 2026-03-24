@@ -42,16 +42,12 @@
 }
 
 .folder-button {
-	width: 80%;
+	width: 100%;
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
 	word-break: break-all;
 	white-space: normal;
-}
-
-.folder-delete-button {
-	font-size: 16px;
 }
 
 .sidebar-break {
