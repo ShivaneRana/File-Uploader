@@ -42,13 +42,3 @@ exports.renderSpecificPage = async (req, res) => {
 		childFolders,
 	});
 };
-
-exports.deleteFolder = async (req, res) => {
-	let { folderId } = req.params;
-	folderId = Number(folderId);
-
-	// delete files first inside folder then folder itself
-	await db.deleteFilesByFolderId({ folderId: folderId });
-	await db.deleteFolder({ id: folderId });
-	return res.status(200).redirect("/home");
-};
