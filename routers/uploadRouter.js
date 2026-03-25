@@ -42,4 +42,6 @@ uploadRouter.post(
 	uploadController.createFolderAtSpecificFolder,
 );
 
+uploadRouter.delete("/delete-folder/:folderId",isAuth,uploadController.deleteFolder);
+
 module.exports = uploadRouter;
