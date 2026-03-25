@@ -57,7 +57,7 @@ uploadRouter.post(
 uploadRouter.delete(
 	"/delete-file/:fileId",
 	isAuth,
-	uploadController.deleteFile
-)
+	uploadController.deleteFile,
+);
 
 module.exports = uploadRouter;

@@ -5,7 +5,7 @@ const fileInfo = {
 	name: undefined,
 	type: undefined,
 	size: undefined,
-	date: undefined
+	date: undefined,
 };
 const fileName = document.createElement("p");
 const fileSize = document.createElement("p");
@@ -73,20 +73,20 @@ fileInfoDiv.addEventListener("click", (e) => {
 });
 
 fileInfoDeleteButton.addEventListener("click", async (e) => {
-	const response = await fetch(`/upload/delete-file/${fileInfo.id}`,{
-		method: "DELETE"
-	})
+	const response = await fetch(`/upload/delete-file/${fileInfo.id}`, {
+		method: "DELETE",
+	});
 
 	const data = await response.json();
 
-	if(response.ok){
-		if(data.folderId === null){
+	if (response.ok) {
+		if (data.folderId === null) {
 			window.location.href = "/home";
-		}else if(typeof data.folderId === 'number'){
+		} else if (typeof data.folderId === "number") {
 			window.location.href = `/home/${data.folderId}`;
 		}
 	}
-})
+});
 
 uploadedFiles.forEach((file) => {
 	file.addEventListener("click", (e) => {
@@ -102,7 +102,6 @@ uploadedFiles.forEach((file) => {
 		fileType.textContent = `Type: ${fileInfo.type}`;
 		fileSize.textContent = `Size: ${fileInfo.size}`;
 		fileDate.textContent = `Date: ${fileInfo.date}`;
-
 
 		fileInfoContent.append(fileName, fileType, fileSize, fileDate);
 		fileInfoDiv.append(fileInfoHeader, fileInfoContent, fileInfoFooter);

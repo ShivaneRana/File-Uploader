@@ -160,12 +160,12 @@ module.exports.renameFolderById = async ({ folderId, newName }) => {
 	});
 };
 
-module.exports.deleteFileById = async({fileId}) => {
+module.exports.deleteFileById = async ({ fileId }) => {
 	const result = await prisma.file.delete({
 		where: {
-			id: fileId
-		}
-	})
+			id: fileId,
+		},
+	});
 
 	return result;
-}
+};
