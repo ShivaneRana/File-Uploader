@@ -53,5 +53,5 @@ exports.deleteFolder = async (req, res) => {
 	await db.deleteFilesByFolderId({ folderId: folderId });
 	await db.deleteFolder({ id: folderId });
 
-	return res.status(200).json({success: true});
+	return res.status(200).json({ success: true });
 };
