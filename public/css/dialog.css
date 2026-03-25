@@ -110,3 +110,9 @@
 	border-radius: var(--border-radius-default);
 	cursor: pointer;
 }
+
+/* delete folder dialog classes */
+
+.confirm-folder-delete-text{
+	color: var(--font-color);
+}
