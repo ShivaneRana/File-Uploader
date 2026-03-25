@@ -60,12 +60,12 @@ exports.renameFolder = async (req, res) => {
 	let { folderId } = req.params;
 	folderId = Number(folderId);
 
-	const newName = req.body['new-folder-name'];
+	const newName = req.body["new-folder-name"];
 
 	await db.renameFolderById({
 		folderId,
-		newName
-	})
+		newName,
+	});
 
 	return res.status(200).redirect(`/home/${folderId}`);
 };
