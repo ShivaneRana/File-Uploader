@@ -1,0 +1,17 @@
+        <dialog class="dialog-rename-folder in-dialog">
+            <div class="dialog-container">
+                <div class="dialog-header">
+                    <p>Rename Folder</p>
+                    <button class="close-folder-rename-dialog close-dialog-button">&#215;</button>
+                </div>
+                <form method="post" action="/upload/rename-folder/<%= locals.currentFolderId %>" class="dialog-form">
+                    <div>
+                        <label for="rename-folder-input">New Name</label>
+                        <input id="rename-folder-input" minlength="1" maxlength="30" class="form-input" name="new-folder-name" type="text">
+                    </div>
+                    <div class="dialog-footer">
+                        <button>Rename</button>
+                    </div>
+                </form>
+            </div>
+        </dialog>
