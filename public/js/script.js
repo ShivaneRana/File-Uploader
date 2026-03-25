@@ -1,4 +1,4 @@
-// create file dialog
+// create file dialog code
 const openButton = document.querySelector(".open-file-upload-dialog");
 const closeButton = document.querySelector(".close-file-upload-dialog");
 const fileUploadDialog = document.querySelector(".dialog-file-upload");
@@ -17,6 +17,7 @@ closeButton.addEventListener("click", () => {
 	fileUploadDialog.close();
 });
 
+// create new folder dialog code
 const openNewFolderButton = document.querySelector(
 	".open-create-folder-dialog",
 );
