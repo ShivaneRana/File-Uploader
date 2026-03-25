@@ -13,6 +13,7 @@
     <script src="/js/displayFileInfo.js" defer></script>
     <% if(locals.currentFolderId !== undefined){ %>
         <script src="/js/deleteFolder.js" defer></script>
+        <script src="/js/renameFolder.js" defer></script>
     <% } %>
     <title>Home | File depot</title>
 </head>
@@ -24,6 +25,7 @@
             <button class="sidebar-button open-create-folder-dialog">New Folder</button>
             <% if(locals.currentFolderId !== undefined){ %>
                 <button class="sidebar-button open-delete-folder-dialog">Delete Folder</button>
+                <button class="sidebar-button open-rename-folder-dialog">Rename Folder</button>
             <% } %>
             <hr class="sidebar-break">
             <% if(locals.currentFolderId === undefined){ %>
@@ -84,7 +86,12 @@
                 <% } %>
             </div>
         </section>
-        <%- include("./partials/dialog-delete-folder.ejs") %>
+
+        <% if(locals.currentFolderId !== undefined){ %>
+            <%- include("./partials/dialog-rename-folder.ejs") %>
+            <%- include("./partials/dialog-delete-folder.ejs") %>
+        <% } %>
+
         <%- include("./partials/dialog-file-upload.ejs") %>
         <%- include("./partials/dialog-folder-create.ejs") %>
     </main>
