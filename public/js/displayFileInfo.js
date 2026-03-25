@@ -1,10 +1,11 @@
 const uploadedFiles = document.querySelectorAll(".uploaded-files");
 const fileInfoDiv = document.querySelector(".file-info-div");
 const fileInfo = {
+	id: undefined,
 	name: undefined,
 	type: undefined,
 	size: undefined,
-	date: undefined,
+	date: undefined
 };
 const fileName = document.createElement("p");
 const fileSize = document.createElement("p");
@@ -23,7 +24,7 @@ const fileInfoContent = document.createElement("div");
 const fileInfoFooter = document.createElement("div");
 const fileInfoDownloadLink = document.createElement("a");
 const fileInfoShareLink = document.createElement("button");
-const fileInfoDeleteLink = document.createElement("a");
+const fileInfoDeleteButton = document.createElement("button");
 const fileInfoCloseDivFooter = document.createElement("button");
 
 // assing class to fileInfoContent where file name,type,size and date is stored.
@@ -37,13 +38,13 @@ fileInfoHeader.classList.add("file-info-header");
 
 // assign content to footer element and append to parent div
 fileInfoCloseDivFooter.textContent = "Close";
-fileInfoDeleteLink.textContent = "Delete";
+fileInfoDeleteButton.textContent = "Delete";
 fileInfoShareLink.textContent = "Share";
 fileInfoDownloadLink.textContent = "Download";
 fileInfoFooter.append(
 	fileInfoCloseDivFooter,
 	fileInfoShareLink,
-	fileInfoDeleteLink,
+	fileInfoDeleteButton,
 	fileInfoDownloadLink,
 );
 fileInfoFooter.classList.add("file-info-footer");
@@ -71,10 +72,27 @@ fileInfoDiv.addEventListener("click", (e) => {
 	e.stopPropagation();
 });
 
+fileInfoDeleteButton.addEventListener("click", async (e) => {
+	const response = await fetch(`/upload/delete-file/${fileInfo.id}`,{
+		method: "DELETE"
+	})
+
+	const data = await response.json();
+
+	if(response.ok){
+		if(data.folderId === null){
+			window.location.href = "/home";
+		}else if(typeof data.folderId === 'number'){
+			window.location.href = `/home/${data.folderId}`;
+		}
+	}
+})
+
 uploadedFiles.forEach((file) => {
 	file.addEventListener("click", (e) => {
 		e.stopPropagation();
 
+		fileInfo.id = file.dataset.id;
 		fileInfo.name = file.dataset.name;
 		fileInfo.size = file.dataset.size;
 		fileInfo.date = file.dataset.date;
@@ -84,6 +102,7 @@ uploadedFiles.forEach((file) => {
 		fileType.textContent = `Type: ${fileInfo.type}`;
 		fileSize.textContent = `Size: ${fileInfo.size}`;
 		fileDate.textContent = `Date: ${fileInfo.date}`;
+
 
 		fileInfoContent.append(fileName, fileType, fileSize, fileDate);
 		fileInfoDiv.append(fileInfoHeader, fileInfoContent, fileInfoFooter);
