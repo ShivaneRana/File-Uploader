@@ -55,3 +55,17 @@ exports.deleteFolder = async (req, res) => {
 
 	return res.status(200).json({ success: true });
 };
+
+exports.renameFolder = async (req, res) => {
+	let { folderId } = req.params;
+	folderId = Number(folderId);
+
+	const newName = req.body['new-folder-name'];
+
+	await db.renameFolderById({
+		folderId,
+		newName
+	})
+
+	return res.status(200).redirect(`/home/${folderId}`);
+};
