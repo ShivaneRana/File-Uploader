@@ -140,3 +140,23 @@
 	color: var(--color-hover);
 	outline: 1px solid var(--color-hover);
 }
+
+/* classes for file path */
+
+.file-path-indicator{
+	margin-bottom: 20px;
+}
+
+.file-path-seprator{
+	margin: 0px 5px;
+	font-weight: 100;
+}
+
+.file-path-link{
+	text-decoration: none;
+	color: var(--color-hover);
+}
+
+.file-path-link:hover{
+	text-decoration: underline;
+}
