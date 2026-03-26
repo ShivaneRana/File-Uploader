@@ -54,6 +54,15 @@
             <% } %>
         </aside>
         <section class="filesview-container">
+            <div class="file-path-indicator">
+                    <a class="file-path-link" href="/home"><%= locals.currentUser.username %></a>
+                <% if(locals.filePath){ %>
+                    <% filePath.forEach(path => { %>
+                        <span class="file-path-seprator"> > </span>
+                        <a class="file-path-link" href="/home/<%= path.id %>"> <%= path.name %></a>
+                    <% }) %>
+                <% } %>
+            </div>
             <div class="filesview-wrapper">
                 <div class="filesview-row filesview-header">
                     <p>Name</p>
