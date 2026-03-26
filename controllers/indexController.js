@@ -35,10 +35,22 @@ exports.renderSpecificPage = async (req, res) => {
 		parentId: folderId,
 	});
 
+	const path = [];
+
+	let currentFolderId = folderId;
+
+	// fetch folder until hitting root directory
+	while(currentFolderId !== null){
+		let response = await db.fetchFolderInfoMinimal({userId,folderId: currentFolderId});
+		path.unshift(response);
+		currentFolderId = response.parentId;
+	}
+
 	return res.status(200).render("index", {
 		folderList: childFolders,
 		currentFolderId: folderId,
 		filesList: files,
 		childFolders,
+		filePath: path
 	});
 };
