@@ -169,3 +169,19 @@ module.exports.deleteFileById = async ({ fileId }) => {
 
 	return result;
 };
+
+// this is for creating path to home directory.
+module.exports.fetchFolderInfoMinimal = async({userId,folderId}) => {
+	const result = await prisma.folder.findUnique({
+		where: {
+				id: folderId,
+				userId
+		},
+		select:{
+			id: true,
+			name: true,
+			parentId: true
+		}
+	})
+	return result;
+}
