@@ -40,8 +40,11 @@ exports.renderSpecificPage = async (req, res) => {
 	let currentFolderId = folderId;
 
 	// fetch folder until hitting root directory
-	while(currentFolderId !== null){
-		let response = await db.fetchFolderInfoMinimal({userId,folderId: currentFolderId});
+	while (currentFolderId !== null) {
+		let response = await db.fetchFolderInfoMinimal({
+			userId,
+			folderId: currentFolderId,
+		});
 		path.unshift(response);
 		currentFolderId = response.parentId;
 	}
@@ -51,6 +54,6 @@ exports.renderSpecificPage = async (req, res) => {
 		currentFolderId: folderId,
 		filesList: files,
 		childFolders,
-		filePath: path
+		filePath: path,
 	});
 };
