@@ -71,6 +71,11 @@
                     <p>Size</p>
                     <p>Created</p>
                 </div>
+                <% if(locals.folderList.length === 0 && locals.filesList.length === 0){ %>
+                    <div class="no-file-no-folder-para">
+                        <p>No file or folder to display.</p>
+                    </div>
+                <% } %>
                 <% if(locals.childFolders){ %>
                     <% childFolders.map(folder => {  %>
                         <a class="filesview-row filesview-content" href="/home/<%= folder.id %>">
