@@ -40,15 +40,9 @@
             <% if(locals.folderList.length !== 0){ %>
             <% folderList.map(folder => { %>
                 <div class="folder-container">
-                    <% if(locals.currentFolderId === folder.id){ %>
-                        <a class="sidebar-button folder-button selected-folder" href="/home/<%= folder.id %>">
-                            <%= folder.name %> 
-                        </a>
-                    <% }else{ %>
-                        <a class="sidebar-button folder-button" href="/home/<%= folder.id %>">
-                            <%= folder.name %> 
-                        </a>
-                    <% } %>
+                    <a class="sidebar-button folder-button" href="/home/<%= folder.id %>">
+                        <%= folder.name %> 
+                    </a>
                 </div>
             <% }) %>
             <% } %>
