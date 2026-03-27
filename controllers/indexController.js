@@ -36,9 +36,9 @@ exports.renderSpecificPage = async (req, res) => {
 	});
 
 	let path = undefined;
-	try{
-		path = await db.fetchFolderPath({folderId,userId});
-	}catch(err){
+	try {
+		path = await db.fetchFolderPath({ folderId, userId });
+	} catch (err) {
 		console.error(err);
 		path = [];
 	}

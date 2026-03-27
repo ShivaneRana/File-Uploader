@@ -186,7 +186,7 @@ module.exports.fetchFolderInfoMinimal = async ({ userId, folderId }) => {
 	return result;
 };
 
-module.exports.fetchFolderPath = async({folderId,userId}) => {
+module.exports.fetchFolderPath = async ({ folderId, userId }) => {
 	const path = [];
 
 	let currentFolderId = folderId;
@@ -202,4 +202,4 @@ module.exports.fetchFolderPath = async({folderId,userId}) => {
 	}
 
 	return path;
-}
+};
