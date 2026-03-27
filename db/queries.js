@@ -185,3 +185,21 @@ module.exports.fetchFolderInfoMinimal = async ({ userId, folderId }) => {
 	});
 	return result;
 };
+
+module.exports.fetchFolderPath = async({folderId,userId}) => {
+	const path = [];
+
+	let currentFolderId = folderId;
+
+	// fetch folder until hitting root directory
+	while (currentFolderId !== null) {
+		let response = await this.fetchFolderInfoMinimal({
+			userId,
+			folderId: currentFolderId,
+		});
+		path.unshift(response);
+		currentFolderId = response.parentId;
+	}
+
+	return path;
+}
