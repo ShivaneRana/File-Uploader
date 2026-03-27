@@ -163,6 +163,6 @@
 	text-decoration: underline;
 }
 
-.current-file-path{
+.current-file-path {
 	color: var(--color-light-gray);
 }
