@@ -55,11 +55,19 @@
         </aside>
         <section class="filesview-container">
             <div class="file-path-indicator">
+                <% if(locals.currentFolderId === undefined){ %>
+                    <a class="file-path-link current-file-path" href="/home"><%= locals.currentUser.username %></a>
+                <% }else{ %>
                     <a class="file-path-link" href="/home"><%= locals.currentUser.username %></a>
+                <% } %>
                 <% if(locals.filePath){ %>
                     <% filePath.forEach(path => { %>
                         <span class="file-path-seprator"> > </span>
-                        <a class="file-path-link" href="/home/<%= path.id %>"> <%= path.name %></a>
+                        <% if(locals.currentFolderId === path.id){ %>
+                            <a class="file-path-link current-file-path" href="/home/<%= path.id %>"> <%= path.name %></a>
+                        <% }else{ %>
+                            <a class="file-path-link" href="/home/<%= path.id %>"> <%= path.name %></a>
+                        <% } %>
                     <% }) %>
                 <% } %>
             </div>
