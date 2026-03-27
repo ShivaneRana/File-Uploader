@@ -153,10 +153,16 @@
 }
 
 .file-path-link {
+	font-weight: 900;
+	font-size: 14px;
 	text-decoration: none;
 	color: var(--color-hover);
 }
 
 .file-path-link:hover {
 	text-decoration: underline;
+}
+
+.current-file-path{
+	color: var(--color-light-gray);
 }
