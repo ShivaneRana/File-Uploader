@@ -33,7 +33,14 @@ confirmFolderDeleteDialog.addEventListener("click", async (e) => {
 		method: "DELETE",
 	});
 
+	const data = await response.json();
+	console.log(data);
+
 	if (response.ok) {
-		window.location.href = "/home";
+		if(data.parentId === null){
+			window.location.href = "/home";
+		}else if(typeof data.parentId === 'number'){
+			window.location.href = `/home/${data.parentId}`;
+		}
 	}
 });
