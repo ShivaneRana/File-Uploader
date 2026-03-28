@@ -30,8 +30,8 @@ exports.renderSpecificPage = async (req, res) => {
 	let path = undefined;
 
 	// early fail safe to check if the folder even exists
-	const result = await db.checkIfFolderExists({folderId});
-	if(!result){
+	const result = await db.checkIfFolderExists({ folderId });
+	if (!result) {
 		return res.status(404).render("404");
 	}
 
