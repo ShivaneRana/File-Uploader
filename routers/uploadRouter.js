@@ -3,17 +3,19 @@ const { isAuth } = require("../middlewares/isAuth.js");
 const multer = require("multer");
 const uploadController = require("../controllers/uploadController.js");
 
-const storage = multer.diskStorage({
-	destination: function (req, file, cb) {
-		cb(null, "./uploads");
-	},
-	filename: function (req, file, cb) {
-		const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
-		cb(null, uniqueSuffix + "-" + file.originalname);
-	},
-});
+// const storage = multer.diskStorage({
+// 	destination: function (req, file, cb) {
+// 		cb(null, "./uploads");
+// 	},
+// 	filename: function (req, file, cb) {
+// 		const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+// 		cb(null, uniqueSuffix + "-" + file.originalname);
+// 	},
+// });
 
-const fileUpload = multer({ storage: storage });
+// const fileUpload = multer({ storage: storage });
+
+const fileUpload = multer({ storage: multer.memoryStorage() });
 
 const uploadRouter = Router();
 
