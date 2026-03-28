@@ -112,6 +112,7 @@ module.exports.createNewFile = async ({
 	mimetype,
 	size,
 	folderId,
+	userId
 }) => {
 	const result = await prisma.file.create({
 		data: {
@@ -120,8 +121,11 @@ module.exports.createNewFile = async ({
 			type: mimetype,
 			size_in_bytes: size,
 			folderId: folderId,
+			userId
 		},
 	});
+
+	return result;
 };
 
 module.exports.fetchFilesByFolderId = async ({ folderId }) => {
