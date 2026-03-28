@@ -55,7 +55,7 @@ exports.deleteFolder = async (req, res) => {
 	const userId = req.user.id;
 
 	// delete files first inside folder then folder itself
-	await db.deleteFilesByFolderId({ folderId: folderId });
+	await db.deleteFilesByFolderId({ folderId: folderId ,userId});
 	await db.deleteFolderByFolderId({ id: folderId ,userId});
 
 	return res.status(200).json({ success: true });
@@ -64,12 +64,14 @@ exports.deleteFolder = async (req, res) => {
 exports.renameFolder = async (req, res) => {
 	let { folderId } = req.params;
 	folderId = Number(folderId);
+	const userId = req.user.id;
 
 	const newName = req.body["new-folder-name"];
 
 	await db.renameFolderById({
 		folderId,
 		newName,
+		userId
 	});
 
 	return res.status(200).redirect(`/home/${folderId}`);
@@ -78,7 +80,8 @@ exports.renameFolder = async (req, res) => {
 exports.deleteFile = async (req, res) => {
 	let { fileId } = req.params;
 	fileId = Number(fileId);
-	const result = await db.deleteFileById({ fileId });
+	const userId = req.user.id;
+	const result = await db.deleteFileById({ fileId ,userId});
 
 	return res.status(200).json({
 		success: true,
