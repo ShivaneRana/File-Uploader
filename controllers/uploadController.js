@@ -58,7 +58,7 @@ exports.deleteFolder = async (req, res) => {
 	await db.deleteFilesByFolderId({ folderId: folderId, userId });
 	const result = await db.deleteFolderByFolderId({ id: folderId, userId });
 
-	return res.status(200).json({ success: true , ...result});
+	return res.status(200).json({ success: true, ...result });
 };
 
 exports.renameFolder = async (req, res) => {

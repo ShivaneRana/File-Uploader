@@ -37,9 +37,9 @@ confirmFolderDeleteDialog.addEventListener("click", async (e) => {
 	console.log(data);
 
 	if (response.ok) {
-		if(data.parentId === null){
+		if (data.parentId === null) {
 			window.location.href = "/home";
-		}else if(typeof data.parentId === 'number'){
+		} else if (typeof data.parentId === "number") {
 			window.location.href = `/home/${data.parentId}`;
 		}
 	}
