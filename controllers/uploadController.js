@@ -9,7 +9,7 @@ exports.createFileAtHome = async (req, res) => {
 		filename,
 		mimetype,
 		size,
-		userId
+		userId,
 	});
 	return res.status(200).redirect("/home");
 };
@@ -26,7 +26,7 @@ exports.createFileAtSpecificFolder = async (req, res) => {
 		mimetype,
 		size,
 		folderId,
-		userId
+		userId,
 	});
 
 	return res.status(200).redirect(`/home/${folderId}`);
@@ -55,8 +55,8 @@ exports.deleteFolder = async (req, res) => {
 	const userId = req.user.id;
 
 	// delete files first inside folder then folder itself
-	await db.deleteFilesByFolderId({ folderId: folderId ,userId});
-	await db.deleteFolderByFolderId({ id: folderId ,userId});
+	await db.deleteFilesByFolderId({ folderId: folderId, userId });
+	await db.deleteFolderByFolderId({ id: folderId, userId });
 
 	return res.status(200).json({ success: true });
 };
@@ -71,7 +71,7 @@ exports.renameFolder = async (req, res) => {
 	await db.renameFolderById({
 		folderId,
 		newName,
-		userId
+		userId,
 	});
 
 	return res.status(200).redirect(`/home/${folderId}`);
@@ -81,7 +81,7 @@ exports.deleteFile = async (req, res) => {
 	let { fileId } = req.params;
 	fileId = Number(fileId);
 	const userId = req.user.id;
-	const result = await db.deleteFileById({ fileId ,userId});
+	const result = await db.deleteFileById({ fileId, userId });
 
 	return res.status(200).json({
 		success: true,
