@@ -48,10 +48,11 @@ exports.createFolderAtSpecificFolder = async (req, res) => {
 exports.deleteFolder = async (req, res) => {
 	let { folderId } = req.params;
 	folderId = Number(folderId);
+	const userId = req.user.id;
 
 	// delete files first inside folder then folder itself
 	await db.deleteFilesByFolderId({ folderId: folderId });
-	await db.deleteFolder({ id: folderId });
+	await db.deleteFolderByFolderId({ id: folderId ,userId});
 
 	return res.status(200).json({ success: true });
 };
