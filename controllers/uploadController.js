@@ -2,12 +2,14 @@ const db = require("../db/queries.js");
 
 exports.createFileAtHome = async (req, res) => {
 	const { originalname, filename, mimetype, size } = req.file;
+	const userId = req.user.id;
 
 	await db.createNewFile({
 		originalname,
 		filename,
 		mimetype,
 		size,
+		userId
 	});
 	return res.status(200).redirect("/home");
 };
@@ -16,6 +18,7 @@ exports.createFileAtSpecificFolder = async (req, res) => {
 	const { originalname, filename, mimetype, size } = req.file;
 	const { targetId } = req.params;
 	const folderId = Number(targetId);
+	const userId = req.user.id;
 
 	await db.createNewFile({
 		originalname,
@@ -23,6 +26,7 @@ exports.createFileAtSpecificFolder = async (req, res) => {
 		mimetype,
 		size,
 		folderId,
+		userId
 	});
 
 	return res.status(200).redirect(`/home/${folderId}`);
