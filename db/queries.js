@@ -214,3 +214,20 @@ module.exports.fetchFolderPath = async ({ folderId, userId }) => {
 
 	return path;
 };
+
+module.exports.checkIfFolderExists = async({folderId}) => {
+	const result = await prisma.folder.findFirst({
+		where: {
+			id: folderId
+		},
+		select: {
+			id: true
+		}
+	})
+
+	if(result === null){
+		return false;
+	}else if(typeof result.id === 'number'){
+		return true;
+	}
+}
