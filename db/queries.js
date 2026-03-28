@@ -128,10 +128,11 @@ module.exports.createNewFile = async ({
 	return result;
 };
 
-module.exports.fetchFilesByFolderId = async ({ folderId }) => {
+module.exports.fetchFilesByFolderId = async ({ folderId, userId}) => {
 	let result = await prisma.file.findMany({
 		where: {
 			folderId: folderId ?? null,
+			userId
 		},
 	});
 
