@@ -27,6 +27,13 @@ exports.renderSpecificPage = async (req, res) => {
 	let { folderId } = req.params;
 	folderId = Number(folderId);
 	const userId = Number(req.user.id);
+	let path = undefined;
+
+	// early fail safe to check if the folder even exists
+	const result = await db.checkIfFolderExists({folderId});
+	if(!result){
+		return res.status(404).render("404");
+	}
 
 	// const folderList = await db.fetchAllFoldersByUserId({ id: userId });
 	let files = await db.fetchFilesByFolderId({ folderId, userId });
@@ -35,7 +42,6 @@ exports.renderSpecificPage = async (req, res) => {
 		parentId: folderId,
 	});
 
-	let path = undefined;
 	try {
 		path = await db.fetchFolderPath({ folderId, userId });
 	} catch (err) {
