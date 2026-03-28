@@ -9,7 +9,7 @@ exports.renderHomePage = async (req, res) => {
 	// const folderList = await db.fetchAllFoldersByUserId({ id: userId });
 
 	// files and folder present inside home directory have null folderId and parentId
-	let files = await db.fetchFilesByFolderId({ folderId: undefined });
+	let files = await db.fetchFilesByFolderId({ folderId: undefined , userId});
 	let childFolders = await db.fetchAllFolderByParentId({
 		userId,
 		parentId: undefined,
@@ -29,7 +29,7 @@ exports.renderSpecificPage = async (req, res) => {
 	const userId = Number(req.user.id);
 
 	// const folderList = await db.fetchAllFoldersByUserId({ id: userId });
-	let files = await db.fetchFilesByFolderId({ folderId });
+	let files = await db.fetchFilesByFolderId({ folderId , userId});
 	let childFolders = await db.fetchAllFolderByParentId({
 		userId,
 		parentId: folderId,
