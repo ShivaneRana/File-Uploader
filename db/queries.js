@@ -147,20 +147,22 @@ module.exports.fetchFilesByFolderId = async ({ folderId, userId}) => {
 	return result;
 };
 
-module.exports.deleteFilesByFolderId = async ({ folderId }) => {
+module.exports.deleteFilesByFolderId = async ({ folderId, userId }) => {
 	const result = await prisma.file.deleteMany({
 		where: {
 			folderId: folderId,
+			userId
 		},
 	});
 
 	return result;
 };
 
-module.exports.renameFolderById = async ({ folderId, newName }) => {
+module.exports.renameFolderById = async ({ folderId, newName , userId}) => {
 	await prisma.folder.update({
 		where: {
 			id: folderId,
+			userId
 		},
 		data: {
 			name: newName,
@@ -168,10 +170,11 @@ module.exports.renameFolderById = async ({ folderId, newName }) => {
 	});
 };
 
-module.exports.deleteFileById = async ({ fileId }) => {
+module.exports.deleteFileById = async ({ fileId ,userId}) => {
 	const result = await prisma.file.delete({
 		where: {
 			id: fileId,
+			userId
 		},
 	});
 
