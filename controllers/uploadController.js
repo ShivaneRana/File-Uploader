@@ -100,3 +100,20 @@ exports.deleteFile = async (req, res) => {
 		...result,
 	});
 };
+
+exports.downloadFile = async (req,res) => {
+	let {fileId} = req.params;
+	fileId = Number(fileId)
+	const userId = req.user.id;
+
+	const result = await db.fetchFileByFileId({fileId,userId});
+
+	const { data: blob, error } = await supabase.storage
+  	.from('uploaded_files')
+	.download(result.newfilename);
+
+	const buffer = Buffer.from(await blob.arrayBuffer());
+	res.setHeader('Content-Disposition', `attachment; filename="${result.name}"`);
+	res.setHeader('Content-Type', result.type);
+	res.send(buffer);
+}
