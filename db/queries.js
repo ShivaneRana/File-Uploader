@@ -250,3 +250,14 @@ module.exports.checkIfFileExists = async({fileId, userId}) => {
 		return true;
 	}
 }
+
+module.exports.fetchFileByFileId = async({fileId, userId}) => {
+	const result = await prisma.file.findFirst({
+		where: {
+			id: fileId,
+			userId
+		}
+	})
+
+	return result;
+}
