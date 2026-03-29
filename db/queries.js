@@ -215,11 +215,11 @@ module.exports.fetchFolderPath = async ({ folderId, userId }) => {
 	return path;
 };
 
-module.exports.checkIfFolderExists = async ({ folderId, userId}) => {
+module.exports.checkIfFolderExists = async ({ folderId, userId }) => {
 	const result = await prisma.folder.findFirst({
 		where: {
 			id: folderId,
-			userId
+			userId,
 		},
 		select: {
 			id: true,
@@ -233,31 +233,31 @@ module.exports.checkIfFolderExists = async ({ folderId, userId}) => {
 	}
 };
 
-module.exports.checkIfFileExists = async({fileId, userId}) => {
+module.exports.checkIfFileExists = async ({ fileId, userId }) => {
 	const result = await prisma.file.findFirst({
 		where: {
 			id: fileId,
-			userId
+			userId,
 		},
 		select: {
-			id: true
-		}
-	})
+			id: true,
+		},
+	});
 
 	if (result === null) {
 		return false;
 	} else if (typeof result.id === "number") {
 		return true;
 	}
-}
+};
 
-module.exports.fetchFileByFileId = async({fileId, userId}) => {
+module.exports.fetchFileByFileId = async ({ fileId, userId }) => {
 	const result = await prisma.file.findFirst({
 		where: {
 			id: fileId,
-			userId
-		}
-	})
+			userId,
+		},
+	});
 
 	return result;
-}
+};

@@ -3,22 +3,22 @@ const supabase = require("../config/supabase.js");
 
 exports.createFileAtHome = async (req, res) => {
 	// const { originalname, filename, mimetype, size } = req.file;
-	const { originalname, mimetype, size , buffer} = req.file;
+	const { originalname, mimetype, size, buffer } = req.file;
 	const userId = req.user.id;
 
 	fileName = `${userId}/${Date.now()}-${originalname}`;
 
 	const { data, error } = await supabase.storage
-    .from("uploaded_files")
-    .upload(fileName, buffer, {
-      contentType: mimetype,
-    });
+		.from("uploaded_files")
+		.upload(fileName, buffer, {
+			contentType: mimetype,
+		});
 
-  	if (error) return res.status(500).json({ error: error.message });
+	if (error) return res.status(500).json({ error: error.message });
 
 	await db.createNewFile({
 		originalname,
-		filename : data.path,
+		filename: data.path,
 		mimetype,
 		size,
 		userId,
@@ -27,7 +27,7 @@ exports.createFileAtHome = async (req, res) => {
 };
 
 exports.createFileAtSpecificFolder = async (req, res) => {
-	const { originalname, mimetype, size , buffer} = req.file;
+	const { originalname, mimetype, size, buffer } = req.file;
 	const { targetId } = req.params;
 	const folderId = Number(targetId);
 	const userId = req.user.id;
@@ -35,16 +35,16 @@ exports.createFileAtSpecificFolder = async (req, res) => {
 	fileName = `${userId}/${Date.now()}-${originalname}`;
 
 	const { data, error } = await supabase.storage
-    .from("uploaded_files")
-    .upload(fileName, buffer, {
-      contentType: mimetype,
-    });
+		.from("uploaded_files")
+		.upload(fileName, buffer, {
+			contentType: mimetype,
+		});
 
-  	if (error) return res.status(500).json({ error: error.message });
+	if (error) return res.status(500).json({ error: error.message });
 
 	await db.createNewFile({
 		originalname,
-		filename : data.path,
+		filename: data.path,
 		mimetype,
 		size,
 		folderId,
@@ -111,19 +111,22 @@ exports.deleteFile = async (req, res) => {
 	});
 };
 
-exports.downloadFile = async (req,res) => {
-	let {fileId} = req.params;
-	fileId = Number(fileId)
+exports.downloadFile = async (req, res) => {
+	let { fileId } = req.params;
+	fileId = Number(fileId);
 	const userId = req.user.id;
 
-	const result = await db.fetchFileByFileId({fileId,userId});
+	const result = await db.fetchFileByFileId({ fileId, userId });
 
 	const { data: blob, error } = await supabase.storage
-  	.from('uploaded_files')
-	.download(result.newfilename);
+		.from("uploaded_files")
+		.download(result.newfilename);
 
 	const buffer = Buffer.from(await blob.arrayBuffer());
-	res.setHeader('Content-Disposition', `attachment; filename="${result.name}"`);
-	res.setHeader('Content-Type', result.type);
+	res.setHeader(
+		"Content-Disposition",
+		`attachment; filename="${result.name}"`,
+	);
+	res.setHeader("Content-Type", result.type);
 	res.send(buffer);
-}
+};
