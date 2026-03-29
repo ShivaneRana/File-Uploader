@@ -62,4 +62,6 @@ uploadRouter.delete(
 	uploadController.deleteFile,
 );
 
+uploadRouter.get("/download-file/:fileId",isAuth, uploadController.downloadFile)
+
 module.exports = uploadRouter;
