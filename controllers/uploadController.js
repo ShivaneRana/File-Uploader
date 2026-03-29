@@ -9,7 +9,7 @@ exports.createFileAtHome = async (req, res) => {
 	fileName = `${userId}/${Date.now()}-${originalname}`;
 
 	const { data, error } = await supabase.storage
-		.from("uploaded_files")
+		.from(process.env.SUPABASE_BUCKET_NAME)
 		.upload(fileName, buffer, {
 			contentType: mimetype,
 		});
@@ -35,7 +35,7 @@ exports.createFileAtSpecificFolder = async (req, res) => {
 	fileName = `${userId}/${Date.now()}-${originalname}`;
 
 	const { data, error } = await supabase.storage
-		.from("uploaded_files")
+		.from(process.env.SUPABASE_BUCKET_NAME)
 		.upload(fileName, buffer, {
 			contentType: mimetype,
 		});
@@ -107,7 +107,7 @@ exports.deleteFile = async (req, res) => {
 
 	const { data, error } = await supabase
   		.storage
-  		.from('uploaded_files')
+		.from(process.env.SUPABASE_BUCKET_NAME)
   		.remove([result.newfilename]);
 
 	return res.status(200).json({
@@ -124,7 +124,7 @@ exports.downloadFile = async (req, res) => {
 	const result = await db.fetchFileByFileId({ fileId, userId });
 
 	const { data: blob, error } = await supabase.storage
-		.from("uploaded_files")
+		.from(process.env.SUPABASE_BUCKET_NAME)
 		.download(result.newfilename);
 
 	const buffer = Buffer.from(await blob.arrayBuffer());
