@@ -105,6 +105,11 @@ exports.deleteFile = async (req, res) => {
 	const userId = req.user.id;
 	const result = await db.deleteFileById({ fileId, userId });
 
+	const { data, error } = await supabase
+  		.storage
+  		.from('uploaded_files')
+  		.remove([result.newfilename]);
+
 	return res.status(200).json({
 		success: true,
 		...result,
