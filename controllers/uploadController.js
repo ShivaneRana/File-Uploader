@@ -27,14 +27,24 @@ exports.createFileAtHome = async (req, res) => {
 };
 
 exports.createFileAtSpecificFolder = async (req, res) => {
-	const { originalname, filename, mimetype, size } = req.file;
+	const { originalname, mimetype, size , buffer} = req.file;
 	const { targetId } = req.params;
 	const folderId = Number(targetId);
 	const userId = req.user.id;
 
+	fileName = `${userId}/${Date.now()}-${originalname}`;
+
+	const { data, error } = await supabase.storage
+    .from("uploaded_files")
+    .upload(fileName, buffer, {
+      contentType: mimetype,
+    });
+
+  	if (error) return res.status(500).json({ error: error.message });
+
 	await db.createNewFile({
 		originalname,
-		filename,
+		filename : data.path,
 		mimetype,
 		size,
 		folderId,
