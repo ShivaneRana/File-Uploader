@@ -88,6 +88,10 @@ fileInfoDeleteButton.addEventListener("click", async (e) => {
 	}
 });
 
+fileInfoDownloadLink.addEventListener("click", async (e) => {
+	window.location.href = `/upload/download-file/${fileInfo.id}`;
+});
+
 uploadedFiles.forEach((file) => {
 	file.addEventListener("click", (e) => {
 		e.stopPropagation();
