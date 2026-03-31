@@ -10,14 +10,14 @@ module.exports.configurePassport = (passport) => {
 
 				if (!user) {
 					console.log("Login denied");
-					return done(null, false, { message: "Incorrect username" });
+					return done(null, false, { message: "Invalid username or password" });
 				}
 
 				const match = await bycryptjs.compare(password, user.password);
 
 				if (!match) {
 					console.log("Login denied");
-					return done(null, false, { message: "Incorrect password" });
+					return done(null, false, { message: "Invalid username or password" });
 				}
 
 				console.log("login approved");
