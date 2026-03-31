@@ -102,8 +102,24 @@ body {
 	outline: 1px solid var(--color-hover);
 }
 
+.loader-spinner {
+	width: 16px;
+	height: 16px;
+	border: 2px solid grey;
+	border-top-color: black;
+	border-radius: 50%;
+	cursor: pointer;
+	animation: spin 0.8s cubic-bezier(0.6, 0.2, 0.4, 0.8) infinite; /* Smoother, less robotic spin */
+}
+
 @media screen and (max-width: 500px) {
 	.main-container {
 		padding: var(--font-default-size);
+	}
+}
+
+@keyframes spin {
+	100% {
+		transform: rotate(360deg);
 	}
 }
