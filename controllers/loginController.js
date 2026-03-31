@@ -1,11 +1,8 @@
 const { body, validationResult, matchedData } = require("express-validator");
-const db = require("../db/queries.js");
 const passport = require("passport");
 
 const maxCharacters = 64;
 const minCharacters = 3;
-let username = "";
-let password = "";
 
 const validationObject = [
 	body("username")
