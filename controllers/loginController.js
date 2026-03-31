@@ -56,6 +56,7 @@ module.exports.loginUser = [
 		passport.authenticate("local", {
 			successRedirect: "/home",
 			failureRedirect: "/login",
+			failureFlash: true
 		})(req, res, next);
 	},
 ];
