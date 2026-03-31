@@ -15,13 +15,16 @@
         <main class="main-container">
             <section class="auth-section">
                 <div class="error-container">
-                <% if(locals.errors){ %>
+                <% if(locals.errors && locals.errors.length > 0){ %>
                         <% locals.errors.forEach(error => {%>
                             <p class="input-warning"> - <%= error.msg %>.</p>
                         <% }) %>
                 <% } %>
-                <% if(locals.flash_error.length > 0){ %>
-                    <p class="input-warning"> - <%= locals.flash_error[0] %>.</p>
+
+                <% if(locals.flash_error && locals.flash_error.length > 0){ %>
+                    <% locals.flash_error.forEach(msg => { %>
+                         <p class="input-warning"> - <%= msg %>.</p>
+                    <% }) %>
                 <% } %>
                 </div>
                 <header>
@@ -31,16 +34,12 @@
                 <form method="post" action="/login">
                     <label for="username">Username </label>
                     <br>
-                        <div>
-                            <input class="username" name="username" type="text" minlength="1" maxlength="64" required>
-                        </div>
+                        <input class="username" name="username" type="text" minlength="1" maxlength="64" required>
                     <br>
 
                     <label for="password">Password </label>
                     <br>
-                    <div>
-                        <input class="password" name="password" type="password" minlength="1" maxlength="64" required>
-                    </div>
+                    <input class="password" name="password" type="password" minlength="1" maxlength="64" required>
                     <br><br>
                     <button class="but">Login</button>
                 </form>
