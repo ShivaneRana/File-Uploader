@@ -43,6 +43,8 @@ fileInfoShareLink.textContent = "Share";
 fileInfoDownloadLink.textContent = "Download";
 
 fileInfoDownloadLink.classList.add("file-info-download-link");
+fileInfoDeleteButton.classList.add("file-info-button");
+fileInfoCloseButton.classList.add("file-info-button");
 
 fileInfoFooter.append(
 	fileInfoCloseDivFooter,
@@ -76,11 +78,24 @@ fileInfoDiv.addEventListener("click", (e) => {
 });
 
 fileInfoDeleteButton.addEventListener("click", async (e) => {
+	const loaderSpinner = document.createElement("div");
+	loaderSpinner.classList.add("loader-spinner");
+	e.preventDefault();
+
+	// Show loading
+	fileInfoDeleteButton.textContent = "";
+	fileInfoDeleteButton.append(loaderSpinner);
+	fileInfoDeleteButton.disabled = true;
+
 	const response = await fetch(`/upload/delete-file/${fileInfo.id}`, {
 		method: "DELETE",
 	});
 
 	const data = await response.json();
+
+	// Reset
+	fileInfoDeleteButton.textContent = "Delete";
+	fileInfoDeleteButton.disabled = false;
 
 	if (response.ok) {
 		if (data.folderId === null) {
