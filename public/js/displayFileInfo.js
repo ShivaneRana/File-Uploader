@@ -97,12 +97,12 @@ fileInfoDownloadLink.addEventListener("click", async (e) => {
 	loaderSpinner.classList.add("loader-spinner");
 	e.preventDefault();
 
-  	// Show loading
-  	fileInfoDownloadLink.textContent = "";
+	// Show loading
+	fileInfoDownloadLink.textContent = "";
 	fileInfoDownloadLink.append(loaderSpinner);
-  	fileInfoDownloadLink.disabled = true;
+	fileInfoDownloadLink.disabled = true;
 
-  	const res = await fetch(`/upload/download-file/${fileInfo.id}`);
+	const res = await fetch(`/upload/download-file/${fileInfo.id}`);
 	const blob = await res.blob();
 
 	// Trigger download manually
