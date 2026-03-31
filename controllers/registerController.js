@@ -5,7 +5,7 @@ const minCharacters = 3;
 const maxCharacters = 64;
 
 const validationObject = [
-	body('username')
+	body("username")
 		.trim()
 		.notEmpty()
 		.withMessage("Username cannot be empty")
@@ -21,16 +21,16 @@ const validationObject = [
 		)
 		.bail()
 		.custom(async (value) => {
-			const result = await db.checkIfUsernameExists({username: value});
+			const result = await db.checkIfUsernameExists({ username: value });
 
-			if(result){
-				throw new Error("username already exists")
+			if (result) {
+				throw new Error("username already exists");
 			}
 
 			return true;
 		}),
 
-	body('password')
+	body("password")
 		.trim()
 		.notEmpty()
 		.withMessage("Password cannot be empty")
@@ -46,7 +46,7 @@ const validationObject = [
 		)
 		.bail(),
 
-	body('confirm_password')
+	body("confirm_password")
 		.trim()
 		.notEmpty()
 		.withMessage("Confirm password cannot be empty")
@@ -58,7 +58,7 @@ const validationObject = [
 			return true;
 		}),
 
-	body('email')
+	body("email")
 		.trim()
 		.optional({ checkFalsy: true })
 		.isEmail()
@@ -66,8 +66,8 @@ const validationObject = [
 		.bail()
 		.isLength({ max: 254 })
 		.withMessage("email can only contain 254 character max")
-		.bail()
-]
+		.bail(),
+];
 
 module.exports.showRegisterPage = (req, res) => {
 	res.status(200).render("register");
@@ -79,7 +79,9 @@ module.exports.registerUser = [
 		const errors = validationResult(req);
 
 		if (!errors.isEmpty()) {
-			return res.status(200).render("register", { errors: errors.array() })
+			return res
+				.status(200)
+				.render("register", { errors: errors.array() });
 		}
 
 		const data = matchedData(req);
@@ -87,5 +89,5 @@ module.exports.registerUser = [
 		await db.createNewUser({ username, password, email: email || null });
 
 		return res.redirect("/");
-	}
-]
+	},
+];

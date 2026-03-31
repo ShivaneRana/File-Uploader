@@ -262,16 +262,16 @@ module.exports.fetchFileByFileId = async ({ fileId, userId }) => {
 	return result;
 };
 
-module.exports.checkIfUsernameExists = async({username}) => {
+module.exports.checkIfUsernameExists = async ({ username }) => {
 	const result = await prisma.user.findFirst({
 		where: {
-			username: username
-		}
-	})
+			username: username,
+		},
+	});
 
-	if(!result){
+	if (!result) {
 		return false;
-	}else{
+	} else {
 		return true;
 	}
-}
+};
