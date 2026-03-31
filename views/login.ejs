@@ -14,6 +14,13 @@
     <%- include("./partials/navbar.ejs")%>
         <main class="main-container">
             <section class="auth-section">
+                <% if(locals.errors){ %>
+                    <div class="error-container">
+                        <% locals.errors.forEach((error,index) => {%>
+                            <p class="input-warning"><%= index + 1%>. <%= error.msg %>.</p>
+                        <% }) %>
+                    </div>
+                <% } %>
                 <header>
                     <h2>Log in</h2>
                     <p>Don't have an account ? <a href="/register">Register</a></p>
@@ -21,13 +28,16 @@
                 <form method="post" action="/login">
                     <label for="username">Username </label>
                     <br>
-                    <input class="username" name="username" type="text" required>
-
+                        <div>
+                            <input class="username" name="username" type="text" minlength="1" maxlength="64" required>
+                        </div>
                     <br>
 
                     <label for="password">Password </label>
                     <br>
-                    <input class="password" name="password" type="password" required>
+                    <div>
+                        <input class="password" name="password" type="password" minlength="1" maxlength="64" required>
+                    </div>
                     <br><br>
                     <button class="but">Login</button>
                 </form>
