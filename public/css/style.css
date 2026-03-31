@@ -68,10 +68,14 @@ body {
 	align-items: flex-start;
 }
 
-.auth-section > form > input {
+.auth-section > form > div{
 	width: 100%;
 	margin-top: 5px;
 	margin-bottom: 20px;
+}
+
+.auth-section > form > div >  input {
+	width: 100%;
 	padding: 10px 20px;
 	font-size: var(--font-default-size);
 	outline: 1px solid var(--color-gray);
@@ -79,10 +83,20 @@ body {
 	border: none;
 	background-color: var(--background-color-input);
 	color: var(--font-color);
+	margin-bottom: 5px;
 }
 
 .auth-section > form > input:focus {
 	outline: 1px solid var(--color-hover);
+}
+
+.error-container{
+	width: 100%;
+}
+
+.input-warning{
+	font-size: 14px;
+	color: red;
 }
 
 .but {
