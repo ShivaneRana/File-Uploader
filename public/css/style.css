@@ -68,13 +68,13 @@ body {
 	align-items: flex-start;
 }
 
-.auth-section > form > div{
+.auth-section > form > div {
 	width: 100%;
 	margin-top: 5px;
 	margin-bottom: 20px;
 }
 
-.auth-section > form > div >  input {
+.auth-section > form > div > input {
 	width: 100%;
 	padding: 10px 20px;
 	font-size: var(--font-default-size);
@@ -90,11 +90,11 @@ body {
 	outline: 1px solid var(--color-hover);
 }
 
-.error-container{
+.error-container {
 	width: 100%;
 }
 
-.input-warning{
+.input-warning {
 	font-size: 14px;
 	color: red;
 }
