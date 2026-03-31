@@ -124,6 +124,13 @@
 	align-items: center;
 }
 
+.file-info-button{
+	width: 80px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 .loader-spinner {
 	width: 16px;
 	height: 16px;
