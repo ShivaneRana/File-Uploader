@@ -14,13 +14,16 @@
     <%- include("./partials/navbar.ejs")%>
         <main class="main-container">
             <section class="auth-section">
+                <div class="error-container">
                 <% if(locals.errors){ %>
-                    <div class="error-container">
-                        <% locals.errors.forEach((error,index) => {%>
-                            <p class="input-warning"><%= index + 1%>. <%= error.msg %>.</p>
+                        <% locals.errors.forEach(error => {%>
+                            <p class="input-warning"> - <%= error.msg %>.</p>
                         <% }) %>
-                    </div>
                 <% } %>
+                <% if(locals.flash_error.length > 0){ %>
+                    <p class="input-warning"> - <%= locals.flash_error[0] %>.</p>
+                <% } %>
+                </div>
                 <header>
                     <h2>Log in</h2>
                     <p>Don't have an account ? <a href="/register">Register</a></p>
