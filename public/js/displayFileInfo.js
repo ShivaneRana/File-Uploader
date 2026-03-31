@@ -41,6 +41,9 @@ fileInfoCloseDivFooter.textContent = "Close";
 fileInfoDeleteButton.textContent = "Delete";
 fileInfoShareLink.textContent = "Share";
 fileInfoDownloadLink.textContent = "Download";
+
+fileInfoDownloadLink.classList.add("file-info-download-link");
+
 fileInfoFooter.append(
 	fileInfoCloseDivFooter,
 	fileInfoShareLink,
@@ -89,7 +92,30 @@ fileInfoDeleteButton.addEventListener("click", async (e) => {
 });
 
 fileInfoDownloadLink.addEventListener("click", async (e) => {
-	window.location.href = `/upload/download-file/${fileInfo.id}`;
+	// window.location.href = `/upload/download-file/${fileInfo.id}`;
+	const loaderSpinner = document.createElement("div");
+	loaderSpinner.classList.add("loader-spinner");
+	e.preventDefault();
+
+  	// Show loading
+  	fileInfoDownloadLink.textContent = "";
+	fileInfoDownloadLink.append(loaderSpinner);
+  	fileInfoDownloadLink.disabled = true;
+
+  	const res = await fetch(`/upload/download-file/${fileInfo.id}`);
+	const blob = await res.blob();
+
+	// Trigger download manually
+	const url = URL.createObjectURL(blob);
+	const a = document.createElement("a");
+	a.href = url;
+	a.download = fileInfo.name; // or parse from Content-Disposition header
+	a.click();
+	URL.revokeObjectURL(url);
+
+	// Reset
+	fileInfoDownloadLink.textContent = "Download";
+	fileInfoDownloadLink.disabled = false;
 });
 
 uploadedFiles.forEach((file) => {
