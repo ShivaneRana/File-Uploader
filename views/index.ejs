@@ -42,7 +42,7 @@
             <% if(locals.folderList.length !== 0){ %>
             <% folderList.map(folder => { %>
                 <div class="folder-container">
-                    <a class="sidebar-button folder-button" href="/home/<%= folder.id %>" >
+                    <a class="sidebar-button folder-button" href="/home/<%= folder.id %>" title="<%= folder.name %>">
                         <img src="/images/child-folder.png" alt="home icon">
                         <%= folder.name %> 
                     </a>
@@ -81,7 +81,7 @@
                 <% } %>
                 <% if(locals.childFolders){ %>
                     <% childFolders.map(folder => {  %>
-                        <a class="filesview-row filesview-content" href="/home/<%= folder.id %>">
+                        <a class="filesview-row filesview-content" href="/home/<%= folder.id %>" title="<%= folder.name %>">
                             <div>
                                 <img src="/images/folder.svg">
                                 <p><%= folder.name%></p>
@@ -93,7 +93,7 @@
                 <% } %>
                 <% if(locals.filesList){ %>
                     <% filesList.map(file => {  %>
-                        <div class="filesview-row filesview-content uploaded-files" data-id="<%= file.id %>" data-name="<%= file.name %>" data-size="<%= file.size_in_bytes %>" data-date="<%= file.createdAt %>" data-type="<%= file.type %>" date-id="<%= file.id %>" >
+                        <div class="filesview-row filesview-content uploaded-files" title="<%= file.name %>" data-id="<%= file.id %>" data-name="<%= file.name %>" data-size="<%= file.size_in_bytes %>" data-date="<%= file.createdAt %>" data-type="<%= file.type %>" date-id="<%= file.id %>">
                             <div>
                                 <img src="/images/file.svg">
                                 <p><%= file.name%></p>
