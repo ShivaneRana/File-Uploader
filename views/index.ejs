@@ -42,7 +42,8 @@
             <% if(locals.folderList.length !== 0){ %>
             <% folderList.map(folder => { %>
                 <div class="folder-container">
-                    <a class="sidebar-button folder-button" href="/home/<%= folder.id %>">
+                    <a class="sidebar-button folder-button" href="/home/<%= folder.id %>" >
+                        <img src="/images/child-folder.png" alt="home icon">
                         <%= folder.name %> 
                     </a>
                 </div>
