@@ -21,11 +21,11 @@
     <%- include("./partials/navbar.ejs")%>
     <main class="index__main-container">
         <aside class="sidebar-container">
-            <button class="sidebar-button open-file-upload-dialog" title="Upload new file"><img src="/images/new-file.png" alt="new file icon">New File</button>
-            <button class="sidebar-button open-create-folder-dialog" title="Create new folder"><img src="/images/new-folder.png" alt="new folder icon">New Folder</button>
+            <button class="sidebar-button open-file-upload-dialog" title="Upload new file"><img src="/images/new-file.png" alt="new file icon"><p>New File</p></button>
+            <button class="sidebar-button open-create-folder-dialog" title="Create new folder"><img src="/images/new-folder.png" alt="new folder icon"><p>New Folder</p></button>
             <% if(locals.currentFolderId !== undefined){ %>
-                <button class="sidebar-button open-delete-folder-dialog" title="Delete current folder"><img src="/images/delete.png" alt="delete icon">Delete Folder</button>
-                <button class="sidebar-button open-rename-folder-dialog" title="Rename current folder"><img src="/images/rename.png" alt="rename icon">Rename Folder</button>
+                <button class="sidebar-button open-delete-folder-dialog" title="Delete current folder"><img src="/images/delete.png" alt="delete icon"><p>Delete Folder</p></button>
+                <button class="sidebar-button open-rename-folder-dialog" title="Rename current folder"><img src="/images/rename.png" alt="rename icon"><p>Rename Folder</p></button>
             <% } %>
             <hr class="sidebar-break">
             <% if(locals.currentFolderId === undefined){ %>
