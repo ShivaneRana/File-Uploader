@@ -1,6 +1,6 @@
 .index__main-container {
 	width: 100%;
-	min-height: 80vh;
+	/* min-height: 80vh; */
 	display: flex;
 }
 
@@ -13,9 +13,9 @@
 
 .sidebar-container {
 	padding: 20px;
-	max-width: 15vw;
+	width: 15vw;
 	min-width: 250px;
-	min-height: 92vh;
+	height: 90vh;
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
@@ -49,6 +49,7 @@
 	width: 20px;
 	height: 20px;
 	margin-right: 10px;
+	object-position: center;
 }
 
 .folder-button {
@@ -56,8 +57,9 @@
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
-	word-break: break-all;
-	white-space: normal;
+	white-space: nowrap;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
 }
 
 .sidebar-break {
@@ -84,7 +86,6 @@
 }
 
 .filesview-row {
-	width: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
@@ -141,14 +142,20 @@
 }
 
 .filesview-content > div > img {
-	width: 25px;
-	height: 25px;
+	width: 20px;
+	height: 20px;
 }
 
 .filesview-content:hover {
 	background-color: var(--color-hover-background);
 	color: var(--color-hover);
 	outline: 1px solid var(--color-hover);
+}
+
+.filesview-content > div > p {
+  	white-space: nowrap;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
 }
 
 /* classes for file path */
@@ -183,4 +190,49 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+@media screen and (max-width: 1250px){
+
+	body{
+		margin-bottom: 10vh;
+	}
+
+	.index__main-container{
+		flex-direction: column-reverse;		
+		min-height: 92vh;
+		justify-content: flex-end;
+	}
+
+	.sidebar-container{
+		padding: 20px;
+		position: fixed;
+		bottom: 0;
+		width: 100vw;
+		height: 10vh;
+		border-right: none;
+		flex-direction: row;
+		justify-content: center;
+		border-top: 1px solid var(--color-gray);
+		background-color: var(--background-black);
+	}
+
+	.sidebar-button{
+		width: 100px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.sidebar-button > p{
+		display: none;
+	}
+
+	.sidebar-button>img {
+		margin-right: 0px;
+	}
+
+	.folder-button,.sidebar-break,.folder-container{
+		display: none;
+	}
 }
