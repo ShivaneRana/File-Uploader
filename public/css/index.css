@@ -117,10 +117,16 @@
 
 .filesview-row > p:nth-child(2) {
 	width: 20%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .filesview-row > p:nth-child(3) {
 	width: 20%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .filesview-content {
@@ -156,6 +162,12 @@
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+}
+
+.filesview-content > p{
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 /* classes for file path */
