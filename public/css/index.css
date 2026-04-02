@@ -58,8 +58,8 @@
 	justify-content: flex-start;
 	align-items: center;
 	white-space: nowrap;
-  	overflow: hidden;
-  	text-overflow: ellipsis;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .sidebar-break {
@@ -153,9 +153,9 @@
 }
 
 .filesview-content > div > p {
-  	white-space: nowrap;
-  	overflow: hidden;
-  	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 /* classes for file path */
@@ -192,19 +192,18 @@
 	align-items: center;
 }
 
-@media screen and (max-width: 1250px){
-
-	body{
+@media screen and (max-width: 1250px) {
+	body {
 		margin-bottom: 10vh;
 	}
 
-	.index__main-container{
-		flex-direction: column-reverse;		
+	.index__main-container {
+		flex-direction: column-reverse;
 		min-height: 92vh;
 		justify-content: flex-end;
 	}
 
-	.sidebar-container{
+	.sidebar-container {
 		padding: 20px;
 		position: fixed;
 		bottom: 0;
@@ -217,22 +216,24 @@
 		background-color: var(--background-black);
 	}
 
-	.sidebar-button{
+	.sidebar-button {
 		width: 100px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 	}
 
-	.sidebar-button > p{
+	.sidebar-button > p {
 		display: none;
 	}
 
-	.sidebar-button>img {
+	.sidebar-button > img {
 		margin-right: 0px;
 	}
 
-	.folder-button,.sidebar-break,.folder-container{
+	.folder-button,
+	.sidebar-break,
+	.folder-container {
 		display: none;
 	}
 }
