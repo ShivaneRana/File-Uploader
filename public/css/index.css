@@ -164,7 +164,7 @@
 	text-overflow: ellipsis;
 }
 
-.filesview-content > p{
+.filesview-content > p {
 	display: flex;
 	justify-content: center;
 	align-items: center;
