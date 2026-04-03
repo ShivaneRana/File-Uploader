@@ -67,6 +67,8 @@
 	color: var(--font-color);
 	font-size: 16px;
 	margin-bottom: 10px;
+	overflow-wrap: break-word;
+  	word-wrap: break-word; 
 }
 
 .file-info-footer {
