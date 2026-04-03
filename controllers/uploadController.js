@@ -2,11 +2,10 @@ const db = require("../db/queries.js");
 const supabase = require("../config/supabase.js");
 
 exports.createFileAtHome = async (req, res) => {
-	// const { originalname, filename, mimetype, size } = req.file;
 	const { originalname, mimetype, size, buffer } = req.file;
 	const userId = req.user.id;
 
-	fileName = `${userId}/${Date.now()}-${originalname}`;
+	const fileName = `${userId}/${Date.now()}-${originalname}`;
 
 	const { data, error } = await supabase.storage
 		.from(process.env.SUPABASE_BUCKET_NAME)
@@ -32,7 +31,7 @@ exports.createFileAtSpecificFolder = async (req, res) => {
 	const folderId = Number(targetId);
 	const userId = req.user.id;
 
-	fileName = `${userId}/${Date.now()}-${originalname}`;
+	const fileName = `${userId}/${Date.now()}-${originalname}`;
 
 	const { data, error } = await supabase.storage
 		.from(process.env.SUPABASE_BUCKET_NAME)
