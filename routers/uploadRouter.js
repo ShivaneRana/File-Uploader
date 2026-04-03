@@ -3,7 +3,10 @@ const { isAuth } = require("../middlewares/isAuth.js");
 const multer = require("multer");
 const uploadController = require("../controllers/uploadController.js");
 
-const fileUpload = multer({ storage: multer.memoryStorage() });
+const fileUpload = multer({
+  		storage: multer.memoryStorage(),
+  		limits: { fileSize: 50 * 1024 * 1024 } // 50mb
+});
 
 const uploadRouter = Router();
 
