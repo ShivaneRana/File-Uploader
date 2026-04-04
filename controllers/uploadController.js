@@ -108,6 +108,8 @@ exports.deleteFile = async (req, res) => {
 		.from(process.env.SUPABASE_BUCKET_NAME)
 		.remove([result.newfilename]);
 
+	if (error) return res.status(500).json({ error: error.message });
+
 	return res.status(200).json({
 		success: true,
 		...result,
@@ -124,6 +126,8 @@ exports.downloadFile = async (req, res) => {
 	const { data: blob, error } = await supabase.storage
 		.from(process.env.SUPABASE_BUCKET_NAME)
 		.download(result.newfilename);
+
+	if (error) return res.status(500).json({ error: error.message });
 
 	const buffer = Buffer.from(await blob.arrayBuffer());
 	res.setHeader(
