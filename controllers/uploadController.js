@@ -2,6 +2,11 @@ const db = require("../db/queries.js");
 const supabase = require("../config/supabase.js");
 
 exports.createFileAtHome = async (req, res) => {
+	if(!(req.file)){
+		req.flash("toast_msg","No file provided");
+		return res.redirect("/home");
+	}
+
 	const { originalname, mimetype, size, buffer } = req.file;
 	const userId = req.user.id;
 
@@ -26,9 +31,15 @@ exports.createFileAtHome = async (req, res) => {
 };
 
 exports.createFileAtSpecificFolder = async (req, res) => {
-	const { originalname, mimetype, size, buffer } = req.file;
 	const { targetId } = req.params;
 	const folderId = Number(targetId);
+
+	if(!(req.file)){
+		req.flash("toast_msg","No file provided");
+		return res.redirect(`/home/${targetId}`);
+	}
+
+	const { originalname, mimetype, size, buffer } = req.file;
 	const userId = req.user.id;
 
 	const fileName = `${userId}/${Date.now()}-${originalname}`;
