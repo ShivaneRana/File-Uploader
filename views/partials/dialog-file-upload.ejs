@@ -7,7 +7,8 @@
                 <form method="post" action="/upload/create-file/<%= locals.currentFolderId %>"  enctype="multipart/form-data" class="dialog-form">
                     <div>
                         <label for="file-upload-input"></label>
-                        <input id="file-upload-input" class="form-input" name="input-file" type="file">
+                        <input id="file-upload-input" class="form-input" name="input-file" type="file" required>
+                        <p class="input-suggestion"> Max file size should be less than 50 mb.</p>
                     </div>
                     <div class="dialog-footer">
                         <button>Upload</button>
