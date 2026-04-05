@@ -6,7 +6,6 @@ exports.redirectToHomePage = async (req, res) => {
 
 exports.renderHomePage = async (req, res) => {
 	const userId = Number(req.user.id);
-	// const folderList = await db.fetchAllFoldersByUserId({ id: userId });
 
 	// files and folder present inside home directory have null folderId and parentId
 	let files = await db.fetchFilesByFolderId({ folderId: undefined, userId });
