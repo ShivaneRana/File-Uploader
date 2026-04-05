@@ -53,9 +53,10 @@ app.use(flash());
 
 app.use((req, res, next) => {
 	res.locals.currentUser = req.user;
+	res.locals.toast_error = req.flash("toast_msg");
 	res.locals.flash_error = req.flash("error");
-	res.locals.flash_error_msg = req.flash("error_msg");
-	res.locals.flash_success_msg = req.flash("success_msg");
+	// res.locals.flash_error_msg = req.flash("error_msg");
+	// res.locals.flash_success_msg = req.flash("success_msg");
 	next();
 });
 
