@@ -13,14 +13,41 @@ const uploadRouter = Router();
 uploadRouter.post(
 	"/create-file",
 	isAuth,
-	fileUpload.single("input-file"),
+	(req,res,next) => {
+		fileUpload.single("input-file")(req,res,(err) => {
+			if(err){
+				if(err.code === "LIMIT_FILE_SIZE"){
+					req.flash("toast_msg","File exceeds size limit.");
+					return res.redirect("/home");
+				}
+				// this should be an error message.... honestly
+				next(err);
+			}
+			next();
+		});
+	},
 	uploadController.createFileAtHome,
 );
 
 uploadRouter.post(
 	"/create-file/:targetId",
 	isAuth,
-	fileUpload.single("input-file"),
+	(req,res,next) => {
+		fileUpload.single("input-file")(req,res,(err) => {
+			let {targetId} = req.params;
+
+			if(err){
+				if(err.code === "LIMIT_FILE_SIZE"){
+					req.flash("toast_msg","File exceeds size limit.");
+					return res.redirect(`/home/${targetId}`);
+				}
+
+				// this should be an error message.... honestly
+				next(err);
+			}
+			next();
+		});
+	},
 	uploadController.createFileAtSpecificFolder,
 );
 
