@@ -4,8 +4,8 @@ const multer = require("multer");
 const uploadController = require("../controllers/uploadController.js");
 
 const fileUpload = multer({
-  		storage: multer.memoryStorage(),
-  		limits: { fileSize: 50 * 1024 * 1024 } // 50mb
+	storage: multer.memoryStorage(),
+	limits: { fileSize: 50 * 1024 * 1024 }, // 50mb
 });
 
 const uploadRouter = Router();
@@ -13,11 +13,11 @@ const uploadRouter = Router();
 uploadRouter.post(
 	"/create-file",
 	isAuth,
-	(req,res,next) => {
-		fileUpload.single("input-file")(req,res,(err) => {
-			if(err){
-				if(err.code === "LIMIT_FILE_SIZE"){
-					req.flash("toast_msg","File exceeds size limit.");
+	(req, res, next) => {
+		fileUpload.single("input-file")(req, res, (err) => {
+			if (err) {
+				if (err.code === "LIMIT_FILE_SIZE") {
+					req.flash("toast_msg", "File exceeds size limit.");
 					return res.redirect("/home");
 				}
 				// this should be an error message.... honestly
@@ -32,13 +32,13 @@ uploadRouter.post(
 uploadRouter.post(
 	"/create-file/:targetId",
 	isAuth,
-	(req,res,next) => {
-		fileUpload.single("input-file")(req,res,(err) => {
-			let {targetId} = req.params;
+	(req, res, next) => {
+		fileUpload.single("input-file")(req, res, (err) => {
+			let { targetId } = req.params;
 
-			if(err){
-				if(err.code === "LIMIT_FILE_SIZE"){
-					req.flash("toast_msg","File exceeds size limit.");
+			if (err) {
+				if (err.code === "LIMIT_FILE_SIZE") {
+					req.flash("toast_msg", "File exceeds size limit.");
 					return res.redirect(`/home/${targetId}`);
 				}
 
