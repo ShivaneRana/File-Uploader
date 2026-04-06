@@ -11,6 +11,9 @@
     <link href="/css/index.css" rel="stylesheet" type="text/css">
     <script src="/js/script.js" defer></script>
     <script src="/js/displayFileInfo.js" defer></script>
+    <% if(locals.toast_error[0]){ %>
+        <script src="/js/toastNotification.js" defer></script>
+    <% } %>
     <% if(locals.currentFolderId !== undefined){ %>
         <script src="/js/deleteFolder.js" defer></script>
         <script src="/js/renameFolder.js" defer></script>
@@ -113,6 +116,12 @@
 
         <%- include("./partials/dialog-file-upload.ejs") %>
         <%- include("./partials/dialog-folder-create.ejs") %>
+        <% if(locals.toast_error[0]){ %>
+            <div class="toast-notification hide-toast" title="<%= locals.toast_error[0] %>">
+                <img class="toast-warning-icon" src="/images/warning-sign.png" alt="warning icon">
+                <p class="toast-message"><%= locals.toast_error[0] %></p>
+            </div> 
+        <% } %>
     </main>
     <div class="file-info-div hide-info"></div>
     </body>
