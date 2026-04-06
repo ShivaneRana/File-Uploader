@@ -28,7 +28,7 @@ exports.createFileAtHome = async (req, res) => {
 		userId,
 	});
 
-	req.flash("toast_msg","New file created.");
+	req.flash("toast_msg", "New file created.");
 
 	return res.status(200).redirect("/home");
 };
@@ -64,7 +64,7 @@ exports.createFileAtSpecificFolder = async (req, res) => {
 		userId,
 	});
 
-	req.flash("toast_msg","New file created.");
+	req.flash("toast_msg", "New file created.");
 
 	return res.status(200).redirect(`/home/${folderId}`);
 };
@@ -77,7 +77,7 @@ exports.createFolderAtHome = async (req, res) => {
 	const userId = req.user.id;
 	await db.createNewFolder({ newFolderName, userId });
 
-	req.flash("toast_msg","New folder created.");
+	req.flash("toast_msg", "New folder created.");
 
 	return res.status(200).redirect("/home");
 };
@@ -94,7 +94,7 @@ exports.createFolderAtSpecificFolder = async (req, res) => {
 
 	await db.createNewFolder({ newFolderName, userId, parentId });
 
-	req.flash("toast_msg","New folder created.");
+	req.flash("toast_msg", "New folder created.");
 
 	return res.status(200).redirect(`/home/${parentId}`);
 };
@@ -108,7 +108,7 @@ exports.deleteFolder = async (req, res) => {
 	await db.deleteFilesByFolderId({ folderId: folderId, userId });
 	const result = await db.deleteFolderByFolderId({ id: folderId, userId });
 
-	req.flash("toast_msg",`${result.name} ( Folder ) deleted.`);
+	req.flash("toast_msg", `${result.name} ( Folder ) deleted.`);
 
 	return res.status(200).json({ success: true, ...result });
 };
@@ -126,7 +126,7 @@ exports.renameFolder = async (req, res) => {
 		userId,
 	});
 
-	req.flash("toast_msg",`Folder renamed.`);
+	req.flash("toast_msg", `Folder renamed.`);
 
 	return res.status(200).redirect(`/home/${folderId}`);
 };
@@ -143,7 +143,7 @@ exports.deleteFile = async (req, res) => {
 
 	if (error) return res.status(500).json({ error: error.message });
 
-	req.flash("toast_msg",`${result.name} ( File ) deleted.`);
+	req.flash("toast_msg", `${result.name} ( File ) deleted.`);
 
 	return res.status(200).json({
 		success: true,
