@@ -227,7 +227,8 @@
 
 .toast-message {
 	color: var(--font-color);
-	overflow-wrap: break-word;
+	/* overflow-wrap: break-word; */
+	word-break: break-all;
 }
 
 .show-toast {
