@@ -70,6 +70,10 @@ const validationObject = [
 ];
 
 module.exports.showRegisterPage = (req, res) => {
+	if(req.isAuthenticated){
+		return res.redirect("/home");
+	};
+
 	res.status(200).render("register");
 };
 
