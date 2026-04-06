@@ -3,7 +3,7 @@ const supabase = require("../config/supabase.js");
 
 exports.createFileAtHome = async (req, res) => {
 	if(!(req.file)){
-		req.flash("toast_msg","No file provided");
+		req.flash("toast_msg","No file provided.");
 		return res.redirect("/home");
 	}
 
@@ -35,7 +35,7 @@ exports.createFileAtSpecificFolder = async (req, res) => {
 	const folderId = Number(targetId);
 
 	if(!(req.file)){
-		req.flash("toast_msg","No file provided");
+		req.flash("toast_msg","No file provided.");
 		return res.redirect(`/home/${targetId}`);
 	}
 
