@@ -65,7 +65,10 @@ exports.createFileAtSpecificFolder = async (req, res) => {
 };
 
 exports.createFolderAtHome = async (req, res) => {
-	const newFolderName = req.body["new-folder-name"];
+	let newFolderName = req.body["new-folder-name"];
+	if(newFolderName === ''){
+		newFolderName = 'New folder'
+	}
 	const userId = req.user.id;
 	await db.createNewFolder({ newFolderName, userId });
 	return res.status(200).redirect("/home");
@@ -74,8 +77,12 @@ exports.createFolderAtHome = async (req, res) => {
 exports.createFolderAtSpecificFolder = async (req, res) => {
 	let { targetId } = req.params;
 	let parentId = Number(targetId);
-	const newFolderName = req.body["new-folder-name"];
+	let newFolderName = req.body["new-folder-name"];
 	const userId = req.user.id;
+
+	if(newFolderName === ''){
+		newFolderName = 'New folder'
+	}
 
 	await db.createNewFolder({ newFolderName, userId, parentId });
 	return res.status(200).redirect(`/home/${parentId}`);
