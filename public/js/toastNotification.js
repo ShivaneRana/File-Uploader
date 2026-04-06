@@ -1,7 +1,7 @@
 const toastNotification = document.querySelector(".toast-notification");
 const toastMessage = document.querySelector(".toast-message");
 let timerCount = null;
-const countdown = 1000;
+const countdown = 5000;
 
 document.addEventListener("DOMContentLoaded",(e) => {
   showToast();
