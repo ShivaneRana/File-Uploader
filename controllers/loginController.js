@@ -39,9 +39,9 @@ const validationObject = [
 ];
 
 module.exports.showLoginPage = (req, res) => {
-	if(req.isAuthenticated){
+	if (req.isAuthenticated()) {
 		return res.redirect("/home");
-	};
+	}
 
 	return res.status(200).render("login");
 };
