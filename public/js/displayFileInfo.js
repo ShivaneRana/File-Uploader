@@ -23,7 +23,7 @@ const fileInfoContent = document.createElement("div");
 // file info Div footer
 const fileInfoFooter = document.createElement("div");
 const fileInfoDownloadLink = document.createElement("a");
-const fileInfoShareLink = document.createElement("button");
+const fileInfoShareButton = document.createElement("button");
 const fileInfoDeleteButton = document.createElement("button");
 const fileInfoCloseDivFooter = document.createElement("button");
 
@@ -39,16 +39,18 @@ fileInfoHeader.classList.add("file-info-header");
 // assign content to footer element and append to parent div
 fileInfoCloseDivFooter.textContent = "Close";
 fileInfoDeleteButton.textContent = "Delete";
-fileInfoShareLink.textContent = "Share";
+fileInfoShareButton.textContent = "Share";
 fileInfoDownloadLink.textContent = "Download";
 
 fileInfoDownloadLink.classList.add("file-info-download-link");
 fileInfoDeleteButton.classList.add("file-info-button");
+fileInfoShareButton.classList.add("file-info-button");
 fileInfoCloseButton.classList.add("file-info-button");
+
 
 fileInfoFooter.append(
 	fileInfoCloseDivFooter,
-	fileInfoShareLink,
+	fileInfoShareButton,
 	fileInfoDeleteButton,
 	fileInfoDownloadLink,
 );
@@ -105,6 +107,21 @@ fileInfoDeleteButton.addEventListener("click", async (e) => {
 		}
 	}
 });
+
+// fileInfoShareButton.addEventListener("click",(e) => {
+	// const loaderSpinner = document.createElement("div");
+	// loaderSpinner.classList.add("loader-spinner");
+	// e.preventDefault();
+
+	// Show loading
+	// fileInfoShareButton.textContent = "";
+	// fileInfoShareButton.append(loaderSpinner);
+	// fileInfoShareButton.disabled = true;
+
+	// Reset
+	// fileInfoShareButton.textContent = "Share";
+	// fileInfoShareButton.disabled = false;
+// })
 
 fileInfoDownloadLink.addEventListener("click", async (e) => {
 	// window.location.href = `/upload/download-file/${fileInfo.id}`;
