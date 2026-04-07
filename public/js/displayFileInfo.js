@@ -47,7 +47,6 @@ fileInfoDeleteButton.classList.add("file-info-button");
 fileInfoShareButton.classList.add("file-info-button");
 fileInfoCloseButton.classList.add("file-info-button");
 
-
 fileInfoFooter.append(
 	fileInfoCloseDivFooter,
 	fileInfoShareButton,
@@ -109,18 +108,18 @@ fileInfoDeleteButton.addEventListener("click", async (e) => {
 });
 
 // fileInfoShareButton.addEventListener("click",(e) => {
-	// const loaderSpinner = document.createElement("div");
-	// loaderSpinner.classList.add("loader-spinner");
-	// e.preventDefault();
+// const loaderSpinner = document.createElement("div");
+// loaderSpinner.classList.add("loader-spinner");
+// e.preventDefault();
 
-	// Show loading
-	// fileInfoShareButton.textContent = "";
-	// fileInfoShareButton.append(loaderSpinner);
-	// fileInfoShareButton.disabled = true;
+// Show loading
+// fileInfoShareButton.textContent = "";
+// fileInfoShareButton.append(loaderSpinner);
+// fileInfoShareButton.disabled = true;
 
-	// Reset
-	// fileInfoShareButton.textContent = "Share";
-	// fileInfoShareButton.disabled = false;
+// Reset
+// fileInfoShareButton.textContent = "Share";
+// fileInfoShareButton.disabled = false;
 // })
 
 fileInfoDownloadLink.addEventListener("click", async (e) => {
