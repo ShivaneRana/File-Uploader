@@ -7,12 +7,13 @@ const dotenv = require("dotenv").config({
 
 const { defineConfig } = require("prisma/config");
 
-export default defineConfig({
+module.exports = defineConfig({
 	schema: "prisma/schema.prisma",
 	migrations: {
 		path: "prisma/migrations",
 	},
 	datasource: {
-		url: process.env["DATABASE_URL"],
+		url: process.env["DIRECT_URL"],
+		// url: process.env["DATABASE_URL"],
 	},
 });
