@@ -23,7 +23,6 @@
 	},
 	"homepage": "https://github.com/ShivaneRana/File-Uploader#readme",
 	"dependencies": {
-		"@prisma/adapter-neon": "^7.7.0",
 		"@prisma/adapter-pg": "^7.4.2",
 		"@prisma/client": "^7.4.2",
 		"@quixo3/prisma-session-store": "^3.1.19",
