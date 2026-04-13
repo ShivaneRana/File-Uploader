@@ -263,13 +263,13 @@ module.exports.fetchFileByFileId = async ({ fileId, userId }) => {
 };
 
 module.exports.checkIfUsernameExists = async ({ username }) => {
-    try {
-        const result = await prisma.user.findFirst({
-            where: { username: username },
-        });
-        return result ? true : false;
-    } catch (err) {
-        console.error("DB error in checkIfUsernameExists:", err);
-        throw new Error("Database error while checking username");
-    }
+	try {
+		const result = await prisma.user.findFirst({
+			where: { username: username },
+		});
+		return result ? true : false;
+	} catch (err) {
+		console.error("DB error in checkIfUsernameExists:", err);
+		throw new Error("Database error while checking username");
+	}
 };
