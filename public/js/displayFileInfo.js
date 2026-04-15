@@ -45,7 +45,7 @@ fileInfoDownloadLink.textContent = "Download";
 fileInfoDownloadLink.classList.add("file-info-download-link");
 fileInfoDeleteButton.classList.add("file-info-button");
 fileInfoShareButton.classList.add("file-info-button");
-fileInfoCloseButton.classList.add("file-info-button");
+fileInfoCloseDivFooter.classList.add("file-info-button");
 
 fileInfoFooter.append(
 	fileInfoCloseDivFooter,
@@ -107,23 +107,7 @@ fileInfoDeleteButton.addEventListener("click", async (e) => {
 	}
 });
 
-// fileInfoShareButton.addEventListener("click",(e) => {
-// const loaderSpinner = document.createElement("div");
-// loaderSpinner.classList.add("loader-spinner");
-// e.preventDefault();
-
-// Show loading
-// fileInfoShareButton.textContent = "";
-// fileInfoShareButton.append(loaderSpinner);
-// fileInfoShareButton.disabled = true;
-
-// Reset
-// fileInfoShareButton.textContent = "Share";
-// fileInfoShareButton.disabled = false;
-// })
-
 fileInfoDownloadLink.addEventListener("click", async (e) => {
-	// window.location.href = `/upload/download-file/${fileInfo.id}`;
 	const loaderSpinner = document.createElement("div");
 	loaderSpinner.classList.add("loader-spinner");
 	e.preventDefault();
