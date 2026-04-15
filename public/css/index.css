@@ -284,3 +284,9 @@
 		display: none;
 	}
 }
+
+@media screen and (max-width: 600px){
+	.toast-notification{
+		width: 80vw;
+	}
+}
