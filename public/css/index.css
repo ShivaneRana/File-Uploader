@@ -285,8 +285,8 @@
 	}
 }
 
-@media screen and (max-width: 600px){
-	.toast-notification{
+@media screen and (max-width: 600px) {
+	.toast-notification {
 		width: 80vw;
 	}
 }
