@@ -10,8 +10,8 @@ A full-stack file storage web application built with Node.js and Express. Users 
 
 <!-- Add screenshots below -->
 
-| Dashboard | Folder View |
-|---|---|
+| Dashboard                                 | Folder View                                     |
+| ----------------------------------------- | ----------------------------------------------- |
 | ![Dashboard](./screenshots/dashboard.png) | ![Sidebar View](./screenshots/sidebar-view.png) |
 
 <!-- Replace the image paths above with your actual screenshots -->
@@ -35,19 +35,19 @@ A full-stack file storage web application built with Node.js and Express. Users 
 
 ## Tech Stack
 
-| Layer | Technology |
-|---|---|
-| Runtime | Node.js |
-| Framework | Express.js v5 |
-| View Engine | EJS |
-| ORM | Prisma (PostgreSQL) |
-| File Storage | Supabase Storage |
-| Auth | Passport.js (Local Strategy) |
-| Upload Middleware | Multer |
-| Session Store | @quixo3/prisma-session-store |
-| Password Hashing | bcryptjs |
-| Validation | express-validator |
-| Code Style | Prettier |
+| Layer             | Technology                   |
+| ----------------- | ---------------------------- |
+| Runtime           | Node.js                      |
+| Framework         | Express.js v5                |
+| View Engine       | EJS                          |
+| ORM               | Prisma (PostgreSQL)          |
+| File Storage      | Supabase Storage             |
+| Auth              | Passport.js (Local Strategy) |
+| Upload Middleware | Multer                       |
+| Session Store     | @quixo3/prisma-session-store |
+| Password Hashing  | bcryptjs                     |
+| Validation        | express-validator            |
+| Code Style        | Prettier                     |
 
 ---
 
@@ -186,22 +186,22 @@ File-Uploader/
 
 ## Routes Overview
 
-| Method | Path | Description |
-|--------|------|-------------|
-| `GET` | `/` | Landing page |
-| `GET` | `/home` | User dashboard (root files & folders) |
-| `GET` | `/home/:folderId` | View contents of a specific folder |
-| `POST` | `/register` | Register a new user |
-| `POST` | `/login` | Log in |
-| `GET` | `/logout` | Log out and destroy session |
-| `POST` | `/upload/file` | Upload a file to root |
-| `POST` | `/upload/file/:targetId` | Upload a file to a specific folder |
-| `POST` | `/upload/folder` | Create a folder at root |
-| `POST` | `/upload/folder/:targetId` | Create a nested folder |
-| `DELETE` | `/upload/folder/:folderId` | Delete folder and its files |
-| `PATCH` | `/upload/folder/:folderId` | Rename a folder |
-| `DELETE` | `/upload/file/:fileId` | Delete a file |
-| `GET` | `/upload/file/:fileId/download` | Download a file |
+| Method   | Path                            | Description                           |
+| -------- | ------------------------------- | ------------------------------------- |
+| `GET`    | `/`                             | Landing page                          |
+| `GET`    | `/home`                         | User dashboard (root files & folders) |
+| `GET`    | `/home/:folderId`               | View contents of a specific folder    |
+| `POST`   | `/register`                     | Register a new user                   |
+| `POST`   | `/login`                        | Log in                                |
+| `GET`    | `/logout`                       | Log out and destroy session           |
+| `POST`   | `/upload/file`                  | Upload a file to root                 |
+| `POST`   | `/upload/file/:targetId`        | Upload a file to a specific folder    |
+| `POST`   | `/upload/folder`                | Create a folder at root               |
+| `POST`   | `/upload/folder/:targetId`      | Create a nested folder                |
+| `DELETE` | `/upload/folder/:folderId`      | Delete folder and its files           |
+| `PATCH`  | `/upload/folder/:folderId`      | Rename a folder                       |
+| `DELETE` | `/upload/file/:fileId`          | Delete a file                         |
+| `GET`    | `/upload/file/:fileId/download` | Download a file                       |
 
 ---
 

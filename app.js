@@ -12,12 +12,12 @@ const flash = require("connect-flash");
 // Keepalive: ping DB every 4 days to prevent Supabase from pausing
 const FOUR_DAYS_MS = 1000 * 60 * 60 * 24 * 4;
 setInterval(async () => {
-  try {
-    await prisma.$queryRaw`SELECT 1`;
-    console.log("[keepalive] DB ping OK");
-  } catch (e) {
-    console.error("[keepalive] DB ping failed:", e.message);
-  }
+	try {
+		await prisma.$queryRaw`SELECT 1`;
+		console.log("[keepalive] DB ping OK");
+	} catch (e) {
+		console.error("[keepalive] DB ping failed:", e.message);
+	}
 }, FOUR_DAYS_MS);
 
 // Routers
