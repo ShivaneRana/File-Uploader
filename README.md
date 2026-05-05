@@ -1,23 +1,35 @@
-# 📂 File Uploader
+# File Uploader
 
 A full-stack file storage web application built with Node.js and Express. Users can register, log in, and manage their files and folders — with files stored securely on **Supabase Storage** and metadata persisted in a **PostgreSQL** database via **Prisma ORM**.
 
-🔗 **GitHub:** [ShivaneRana/File-Uploader](https://github.com/ShivaneRana/File-Uploader)
+**GitHub:** [ShivaneRana/File-Uploader](https://github.com/ShivaneRana/File-Uploader)
+
+---
+
+## Screenshots
+
+<!-- Add screenshots below -->
+
+| Dashboard | Folder View |
+|---|---|
+| ![Dashboard](./screenshots/dashboard.png) | ![Sidebar View](./screenshots/sidebar-view.png) |
+
+<!-- Replace the image paths above with your actual screenshots -->
 
 ---
 
 ## Features
 
-- 🔐 User authentication with **Passport.js** (local strategy) and **bcrypt** password hashing
-- 📁 Create, rename, and delete **nested folders**
-- 📤 Upload files to **Supabase Storage** (via Multer buffer)
-- 📥 Download files directly from Supabase
-- 🗑️ Delete files (removed from both Supabase and the database)
-- 🗂️ Organize files inside specific folders or at the root level
-- 💬 Flash messages for user feedback (toast notifications)
-- 🔄 Session persistence using **Prisma Session Store**
-- ⚡ Response compression via `compression` middleware
-- 🔁 DB keepalive ping every 4 days to prevent Supabase from pausing
+- User authentication with **Passport.js** (local strategy) and **bcrypt** password hashing
+- Create, rename, and delete **nested folders**
+- Upload files to **Supabase Storage** (via Multer buffer)
+- Download files directly from Supabase
+- Delete files (removed from both Supabase and the database)
+- Organize files inside specific folders or at the root level
+- Flash messages for user feedback (toast notifications)
+- Session persistence using **Prisma Session Store**
+- Response compression via `compression` middleware
+- DB keepalive ping every 4 days to prevent Supabase from pausing
 
 ---
 
